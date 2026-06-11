@@ -30,7 +30,9 @@ class ProfileBuilder:
 
         graph = nx.Graph()
 
-        # Add nodes
+        # ----------------------------------
+        # Add Citizen Nodes
+        # ----------------------------------
 
         for record in records:
 
@@ -39,7 +41,9 @@ class ProfileBuilder:
                 data=record
             )
 
-        # Similarity edges
+        # ----------------------------------
+        # Entity Resolution
+        # ----------------------------------
 
         for i in range(len(records)):
 
@@ -68,6 +72,10 @@ class ProfileBuilder:
             nx.connected_components(graph)
         )
 
+        # ----------------------------------
+        # Build Unified Profiles
+        # ----------------------------------
+
         for idx, component in enumerate(
             components,
             start=1
@@ -81,6 +89,8 @@ class ProfileBuilder:
 
             incomes = []
 
+            taxes_paid = []
+
             filer_status = []
 
             for citizen_id in component:
@@ -91,21 +101,51 @@ class ProfileBuilder:
                     if r["citizen_id"] == citizen_id
                 )
 
-                component_records.append(record)
+                component_records.append(
+                    record
+                )
 
-                aliases.add(record["name"])
+                aliases.add(
+                    record["name"]
+                )
 
-                linked_ids.append(citizen_id)
+                linked_ids.append(
+                    citizen_id
+                )
 
                 incomes.append(
-                    record["declared_income"]
+                    int(
+                        record[
+                            "declared_income"
+                        ]
+                    )
+                )
+
+                taxes_paid.append(
+                    int(
+                        record[
+                            "tax_paid"
+                        ]
+                    )
                 )
 
                 filer_status.append(
-                    record["filer_status"]
+                    record[
+                        "filer_status"
+                    ]
                 )
 
-            master_record = component_records[0]
+            master_record = (
+                component_records[0]
+            )
+
+            profile_confidence = 92
+
+            if len(component) == 1:
+                profile_confidence = 85
+
+            if len(component) >= 3:
+                profile_confidence = 95
 
             profiles.append({
 
@@ -124,6 +164,9 @@ class ProfileBuilder:
                 "declared_income":
                 max(incomes),
 
+                "tax_paid":
+                sum(taxes_paid),
+
                 "filer_status":
                 (
                     "Non-Filer"
@@ -133,7 +176,7 @@ class ProfileBuilder:
                 ),
 
                 "profile_confidence":
-                92
+                profile_confidence
 
             })
 

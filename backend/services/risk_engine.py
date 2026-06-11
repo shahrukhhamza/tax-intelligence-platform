@@ -8,10 +8,16 @@ class RiskEngine:
     ):
 
         score = 0
+
         reasons = []
 
         income = profile.get(
             "declared_income",
+            0
+        )
+
+        tax_paid = profile.get(
+            "tax_paid",
             0
         )
 
@@ -43,8 +49,34 @@ class RiskEngine:
             score += 25
 
             reasons.append(
-                "Non-Filer Status"
+                "Registered as Non-Filer"
             )
+
+        # ---------------------
+        # TAX TO INCOME RATIO
+        # ---------------------
+
+        if income > 0:
+
+            tax_ratio = (
+                tax_paid / income
+            ) * 100
+
+            if tax_ratio < 2:
+
+                score += 25
+
+                reasons.append(
+                    f"Very low tax-to-income ratio ({tax_ratio:.2f}%)"
+                )
+
+            elif tax_ratio < 5:
+
+                score += 15
+
+                reasons.append(
+                    f"Low tax-to-income ratio ({tax_ratio:.2f}%)"
+                )
 
         # ---------------------
         # HIGH UTILITY BILL
@@ -57,7 +89,7 @@ class RiskEngine:
                 score += 20
 
                 reasons.append(
-                    "High Utility Consumption"
+                    f"High utility consumption (PKR {utility_bill:,})"
                 )
 
             elif utility_bill > 50000:
@@ -65,14 +97,14 @@ class RiskEngine:
                 score += 10
 
                 reasons.append(
-                    "Moderate Utility Consumption"
+                    f"Moderate utility consumption (PKR {utility_bill:,})"
                 )
 
         # ---------------------
         # LUXURY VEHICLES
         # ---------------------
 
-        luxury_vehicle_found = False
+        luxury_count = 0
 
         if vehicles:
 
@@ -85,35 +117,14 @@ class RiskEngine:
                     ) >= 2500
                 ):
 
-                    luxury_vehicle_found = True
-                    break
+                    luxury_count += 1
 
-        if luxury_vehicle_found:
+        if luxury_count >= 1:
 
             score += 20
 
             reasons.append(
-                "Luxury Vehicle Ownership"
-            )
-
-        # ---------------------
-        # LOW INCOME
-        # ---------------------
-
-        if income < 500000:
-
-            score += 15
-
-            reasons.append(
-                "Low Declared Income"
-            )
-
-        elif income < 1000000:
-
-            score += 10
-
-            reasons.append(
-                "Moderate Declared Income"
+                f"Owns {luxury_count} luxury vehicle(s)"
             )
 
         # ---------------------
@@ -125,7 +136,7 @@ class RiskEngine:
             score += 10
 
             reasons.append(
-                "Multiple Identity Variations"
+                "Multiple identity variations detected"
             )
 
         # ---------------------
@@ -137,29 +148,54 @@ class RiskEngine:
             score += 10
 
             reasons.append(
-                "Multiple Linked Tax Records"
+                "Large number of linked records"
             )
 
         # ---------------------
-        # FINAL LEVEL
+        # INCOME VS LIFESTYLE
         # ---------------------
 
-        final_score = min(score, 100)
+        if (
+            income < 1000000
+            and utility_bill
+            and utility_bill > 100000
+        ):
+
+            score += 15
+
+            reasons.append(
+                "Lifestyle appears inconsistent with declared income"
+            )
+
+        # ---------------------
+        # FINAL SCORE
+        # ---------------------
+
+        final_score = min(
+            score,
+            100
+        )
 
         risk_level = "Low"
 
         if final_score >= 75:
+
             risk_level = "Critical"
 
         elif final_score >= 50:
+
             risk_level = "High"
 
         elif final_score >= 25:
+
             risk_level = "Medium"
 
         return {
 
             "risk_score":
+            final_score,
+
+            "tax_compliance_deviation_score":
             final_score,
 
             "risk_level":
@@ -170,7 +206,8 @@ class RiskEngine:
 
             "explanation":
             (
-                f"Risk Score {final_score} generated due to: "
+                f"Tax Compliance Deviation Score "
+                f"{final_score}/100 generated due to: "
                 + ", ".join(reasons)
             )
 
