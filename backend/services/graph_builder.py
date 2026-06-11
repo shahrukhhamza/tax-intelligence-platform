@@ -1,7 +1,8 @@
 import networkx as nx
-import pandas as pd
 
 from services.profile_builder import ProfileBuilder
+from services.data_enrichment import DataEnrichment
+from services.risk_engine import RiskEngine
 
 
 class GraphBuilder:
@@ -10,78 +11,196 @@ class GraphBuilder:
 
         self.profile_builder = ProfileBuilder()
 
-        self.vehicle_df = pd.read_csv(
-            "../data/vehicle_records.csv"
+        self.enrichment_service = (
+            DataEnrichment()
         )
 
-        self.utility_df = pd.read_csv(
-            "../data/utility_bills.csv"
+        self.risk_engine = (
+            RiskEngine()
         )
 
     def build_graph(self):
 
         graph = nx.Graph()
 
-        profiles = self.profile_builder.build_profiles()
-
-        # Citizen entities
+        profiles = (
+            self.profile_builder
+            .build_profiles()
+        )
 
         for profile in profiles:
 
-            graph.add_node(
-                profile["entity_id"],
-                type="citizen",
-                label=profile["master_name"]
+            entity_id = (
+                profile["entity_id"]
             )
 
-        # Vehicles
+            enrichment = (
+                self.enrichment_service
+                .enrich(profile)
+            )
 
-        for profile in profiles:
+            risk = (
+                self.risk_engine
+                .calculate_risk(
+                    profile,
+                    vehicles=enrichment[
+                        "vehicles"
+                    ],
+                    utility_bill=enrichment[
+                        "max_bill"
+                    ]
+                )
+            )
 
-            aliases = profile["aliases"]
+            # ---------------------
+            # CITIZEN NODE
+            # ---------------------
 
-            for _, vehicle in self.vehicle_df.iterrows():
+            graph.add_node(
+                entity_id,
+                type="citizen",
+                label=profile[
+                    "master_name"
+                ]
+            )
 
-                if vehicle["owner_name"] in aliases:
+            # ---------------------
+            # VEHICLES
+            # ---------------------
 
-                    vehicle_id = vehicle["vehicle_id"]
+            for vehicle in enrichment[
+                "vehicles"
+            ]:
 
-                    graph.add_node(
-                        vehicle_id,
-                        type="vehicle",
-                        label=vehicle["vehicle_type"]
-                    )
+                vehicle_id = (
+                    vehicle[
+                        "vehicle_id"
+                    ]
+                )
 
-                    graph.add_edge(
-                        profile["entity_id"],
-                        vehicle_id,
-                        relation="OWNS"
-                    )
+                graph.add_node(
+                    vehicle_id,
+                    type="vehicle",
+                    label=vehicle[
+                        "vehicle_type"
+                    ]
+                )
 
-        # Utility
+                graph.add_edge(
+                    entity_id,
+                    vehicle_id,
+                    relation="OWNS"
+                )
 
-        for profile in profiles:
+            # ---------------------
+            # UTILITY BILL
+            # ---------------------
 
-            aliases = profile["aliases"]
+            if (
+                enrichment["max_bill"]
+                > 0
+            ):
 
-            for _, utility in self.utility_df.iterrows():
+                utility_node = (
+                    f"{entity_id}_UTILITY"
+                )
 
-                if utility["consumer_name"] in aliases:
+                graph.add_node(
+                    utility_node,
+                    type="utility",
+                    label=
+                    f"PKR {enrichment['max_bill']:,}"
+                )
 
-                    meter_id = utility["meter_id"]
+                graph.add_edge(
+                    entity_id,
+                    utility_node,
+                    relation="PAYS"
+                )
 
-                    graph.add_node(
-                        meter_id,
-                        type="utility",
-                        label=str(
-                            utility["monthly_bill"]
-                        )
-                    )
+            # ---------------------
+            # FILER STATUS
+            # ---------------------
 
-                    graph.add_edge(
-                        profile["entity_id"],
-                        meter_id,
-                        relation="PAYS"
-                    )
+            status_node = (
+                f"{entity_id}_STATUS"
+            )
+
+            graph.add_node(
+                status_node,
+                type="status",
+                label=profile[
+                    "filer_status"
+                ]
+            )
+
+            graph.add_edge(
+                entity_id,
+                status_node,
+                relation="STATUS"
+            )
+
+            # ---------------------
+            # INCOME NODE
+            # ---------------------
+
+            income_node = (
+                f"{entity_id}_INCOME"
+            )
+
+            graph.add_node(
+                income_node,
+                type="income",
+                label=
+                f"Income: PKR {profile['declared_income']:,}"
+            )
+
+            graph.add_edge(
+                entity_id,
+                income_node,
+                relation="DECLARES"
+            )
+
+            # ---------------------
+            # TAX NODE
+            # ---------------------
+
+            tax_node = (
+                f"{entity_id}_TAX"
+            )
+
+            graph.add_node(
+                tax_node,
+                type="tax",
+                label=
+                f"Tax: PKR {profile['tax_paid']:,}"
+            )
+
+            graph.add_edge(
+                entity_id,
+                tax_node,
+                relation="PAID"
+            )
+
+            # ---------------------
+            # COMPLIANCE SCORE
+            # ---------------------
+
+            score_node = (
+                f"{entity_id}_TCDS"
+            )
+
+            graph.add_node(
+                score_node,
+                type="risk",
+                label=
+                f"TCDS {risk['tax_compliance_deviation_score']}"
+            )
+
+            graph.add_edge(
+                entity_id,
+                score_node,
+                relation="FLAGGED"
+            )
 
         return graph
