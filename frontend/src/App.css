@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f7f7f5;
+  color: #111;
+  font-family: Inter, sans-serif;
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: white;
+  border-right: 1px solid #e7e7e4;
+  padding: 24px;
+}
+
+.logo {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+}
+
+.nav-item {
+  padding: 12px 0;
+  color: #666;
+  cursor: pointer;
+}
+
+.nav-item.active {
+  color: #c41e3a;
+  font-weight: 600;
+}
+
+.content {
+  flex: 1;
+}
+
+.header {
+  height: 56px;
+  border-bottom: 1px solid #e7e7e4;
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  background: white;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 32px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #e7e7e4;
+  padding: 24px;
+}
+
+.card h3 {
+  font-size: 14px;
+  color: #666;
+}
+
+.card p {
+  margin-top: 12px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.table-section {
+  padding: 0 32px 32px;
+}
+
+.table-section h2 {
+  margin-bottom: 16px;
+}
+
+table {
+  width: 100%;
+  background: white;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 16px;
+  border-bottom: 1px solid #e7e7e4;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-item {
+  display: block;
+  padding: 12px 0;
+  color: #666;
+}
+
+.nav-item.active {
+  color: #c41e3a;
+  font-weight: 600;
+}

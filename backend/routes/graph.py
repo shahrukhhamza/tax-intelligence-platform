@@ -1,0 +1,108 @@
+from fastapi import APIRouter
+from services.graph_builder import GraphBuilder
+import networkx as nx
+
+router = APIRouter()
+
+
+@router.get("/live-graph")
+def get_live_graph():
+
+    builder = GraphBuilder()
+
+    graph = builder.build_graph()
+
+    nodes = []
+    edges = []
+
+    for node, data in graph.nodes(data=True):
+
+        nodes.append({
+            "id": str(node),
+            "label": data.get("label", str(node)),
+            "type": data.get("type", "default")
+        })
+
+    for source, target, data in graph.edges(data=True):
+
+        edges.append({
+            "source": str(source),
+            "target": str(target),
+            "label": data.get("relation", "")
+        })
+
+    return {
+        "nodes": nodes,
+        "edges": edges
+    }
+
+
+@router.get("/graph/{entity_id}")
+def get_entity_graph(entity_id: str):
+
+    builder = GraphBuilder()
+
+    graph = builder.build_graph()
+
+    if entity_id not in graph:
+        return {
+            "success": False,
+            "message": f"Entity {entity_id} not found",
+            "nodes": [],
+            "edges": []
+        }
+
+    subgraph = nx.ego_graph(
+        graph,
+        entity_id,
+        radius=1
+    )
+
+    # LIMIT GRAPH SIZE FOR VISUALIZATION
+    if len(subgraph.nodes()) > 20:
+
+        important_nodes = [entity_id]
+
+        neighbors = list(
+            graph.neighbors(entity_id)
+        )[:15]
+
+        important_nodes.extend(
+            neighbors
+        )
+
+        subgraph = graph.subgraph(
+            important_nodes
+        ).copy()
+
+    nodes = []
+    edges = []
+
+    for node, data in subgraph.nodes(data=True):
+
+        nodes.append({
+            "id": str(node),
+            "label": data.get("label", str(node)),
+            "type": (
+                "target"
+                if str(node) == entity_id
+                else data.get("type", "default")
+            )
+        })
+
+    for source, target, data in subgraph.edges(data=True):
+
+        edges.append({
+            "source": str(source),
+            "target": str(target),
+            "label": data.get("relation", "")
+        })
+
+    return {
+        "success": True,
+        "entity_id": entity_id,
+        "node_count": len(nodes),
+        "edge_count": len(edges),
+        "nodes": nodes,
+        "edges": edges
+    }

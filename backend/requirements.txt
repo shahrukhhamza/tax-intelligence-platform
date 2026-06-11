@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+pandas
+rapidfuzz
+sentence-transformers
+networkx
+python-multipart
