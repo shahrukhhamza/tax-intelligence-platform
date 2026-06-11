@@ -1,15 +1,18 @@
 from fastapi import APIRouter
+
 from services.profile_builder import ProfileBuilder
 from services.risk_engine import RiskEngine
+from services.data_enrichment import DataEnrichment
 
 router = APIRouter()
+
+profile_builder = ProfileBuilder()
+risk_engine = RiskEngine()
+enrichment_service = DataEnrichment()
 
 
 @router.get("/live-citizens")
 def get_live_citizens():
-
-    profile_builder = ProfileBuilder()
-    risk_engine = RiskEngine()
 
     profiles = profile_builder.build_profiles()
 
@@ -17,26 +20,38 @@ def get_live_citizens():
 
     for profile in profiles:
 
-        risk = risk_engine.calculate_risk(
-            profile,
-            vehicles=[],
-            utility_bill=120000
+        enrichment = (
+            enrichment_service.enrich(
+                profile
+            )
         )
 
-        risk_level = "Low"
-
-        if risk["risk_score"] >= 75:
-            risk_level = "Critical"
-        elif risk["risk_score"] >= 50:
-            risk_level = "High"
-        elif risk["risk_score"] >= 25:
-            risk_level = "Medium"
+        risk = risk_engine.calculate_risk(
+            profile,
+            vehicles=enrichment["vehicles"],
+            utility_bill=enrichment["max_bill"]
+        )
 
         results.append({
-            "entity_id": profile["entity_id"],
-            "name": profile["master_name"],
-            "risk_score": risk["risk_score"],
-            "risk_level": risk_level
+
+            "entity_id":
+            profile["entity_id"],
+
+            "name":
+            profile["master_name"],
+
+            "risk_score":
+            risk["risk_score"],
+
+            "risk_level":
+            risk["risk_level"],
+
+            "vehicle_count":
+            enrichment["vehicle_count"],
+
+            "max_utility_bill":
+            enrichment["max_bill"]
+
         })
 
     results.sort(
@@ -50,35 +65,67 @@ def get_live_citizens():
 @router.get("/live-citizen/{entity_id}")
 def get_live_citizen(entity_id: str):
 
-    profile_builder = ProfileBuilder()
-    risk_engine = RiskEngine()
-
     profiles = profile_builder.build_profiles()
 
     for profile in profiles:
 
         if profile["entity_id"] == entity_id:
 
+            enrichment = (
+                enrichment_service.enrich(
+                    profile
+                )
+            )
+
             risk = risk_engine.calculate_risk(
                 profile,
-                vehicles=[
-                    {
-                        "vehicle_type": "Prado",
-                        "engine_cc": 3000
-                    }
-                ],
-                utility_bill=120000
+                vehicles=enrichment["vehicles"],
+                utility_bill=enrichment["max_bill"]
             )
 
             return {
-                "entity_id": profile["entity_id"],
-                "name": profile["master_name"],
-                "aliases": profile["aliases"],
-                "linked_records": profile["linked_records"],
-                "declared_income": profile["declared_income"],
-                "filer_status": profile["filer_status"],
-                "risk_score": risk["risk_score"],
-                "reasons": risk["reasons"]
+
+                "entity_id":
+                profile["entity_id"],
+
+                "name":
+                profile["master_name"],
+
+                "aliases":
+                profile["aliases"],
+
+                "linked_records":
+                profile["linked_records"],
+
+                "declared_income":
+                profile["declared_income"],
+
+                "filer_status":
+                profile["filer_status"],
+
+                "risk_score":
+                risk["risk_score"],
+
+                "risk_level":
+                risk["risk_level"],
+
+                "reasons":
+                risk["reasons"],
+
+                "vehicle_count":
+                enrichment["vehicle_count"],
+
+                "luxury_vehicle_count":
+                enrichment[
+                    "luxury_vehicle_count"
+                ],
+
+                "max_utility_bill":
+                enrichment["max_bill"],
+
+                "vehicles":
+                enrichment["vehicles"]
+
             }
 
     return {
