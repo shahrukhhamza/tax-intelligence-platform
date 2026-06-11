@@ -149,7 +149,7 @@ function CitizenProfile() {
       >
         <button
           onClick={() =>
-            navigate("/graph")
+            navigate(`/graph/${id}`)
           }
           style={{
             padding: "12px 20px",
@@ -161,7 +161,7 @@ function CitizenProfile() {
 
         <button
           onClick={() =>
-            navigate("/audit")
+            navigate(`/audit/${id}`)
           }
           style={{
             padding: "12px 20px",

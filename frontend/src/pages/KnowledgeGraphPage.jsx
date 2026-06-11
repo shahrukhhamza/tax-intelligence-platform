@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import KnowledgeGraph from "../components/KnowledgeGraph";
 
 function KnowledgeGraphPage() {
+
+  const { id } = useParams();
 
   const [graphData, setGraphData] = useState({
     nodes: [],
@@ -11,12 +14,15 @@ function KnowledgeGraphPage() {
   useEffect(() => {
 
     fetch(
-      "http://127.0.0.1:8000/api/graph/ENT001"
+      `http://127.0.0.1:8000/api/graph/${id}`
     )
       .then((res) => res.json())
       .then((data) => {
 
-        console.log("GRAPH RESPONSE:", data);
+        console.log(
+          "GRAPH RESPONSE:",
+          data
+        );
 
         setGraphData({
           nodes: data.nodes || [],
@@ -28,18 +34,24 @@ function KnowledgeGraphPage() {
         console.error(err)
       );
 
-  }, []);
+  }, [id]);
 
   return (
     <div style={{ padding: "20px" }}>
+
       <h1>
         Entity Investigation Graph
       </h1>
+
+      <p>
+        Entity ID: {id}
+      </p>
 
       <KnowledgeGraph
         nodes={graphData.nodes}
         edges={graphData.edges}
       />
+
     </div>
   );
 }

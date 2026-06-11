@@ -25,15 +25,30 @@ function App() {
 
           <Routes>
 
-            <Route path="/" element={<Dashboard />} />
+            <Route
+              path="/"
+              element={<Dashboard />}
+            />
 
-            <Route path="/citizens" element={<Citizens />} />
+            <Route
+              path="/citizens"
+              element={<Citizens />}
+            />
 
-            <Route path="/citizen/:id" element={<CitizenProfile />} />
+            <Route
+              path="/citizen/:id"
+              element={<CitizenProfile />}
+            />
 
-            <Route path="/graph" element={<KnowledgeGraphPage />} />
+            <Route
+              path="/graph/:id"
+              element={<KnowledgeGraphPage />}
+            />
 
-            <Route path="/audit" element={<AuditReports />} />
+            <Route
+              path="/audit/:id"
+              element={<AuditReports />}
+            />
 
           </Routes>
 
