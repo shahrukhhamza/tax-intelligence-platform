@@ -21,6 +21,8 @@ class GraphBuilder:
 
     def build_graph(self):
 
+        print("🔥 NEW GRAPH BUILDER LOADED 🔥")
+
         graph = nx.Graph()
 
         profiles = (
@@ -30,9 +32,7 @@ class GraphBuilder:
 
         for profile in profiles:
 
-            entity_id = (
-                profile["entity_id"]
-            )
+            entity_id = profile["entity_id"]
 
             enrichment = (
                 self.enrichment_service
@@ -43,14 +43,35 @@ class GraphBuilder:
                 self.risk_engine
                 .calculate_risk(
                     profile,
-                    vehicles=enrichment[
-                        "vehicles"
-                    ],
-                    utility_bill=enrichment[
-                        "max_bill"
-                    ]
+                    vehicles=enrichment.get(
+                        "vehicles",
+                        []
+                    ),
+                    utility_bill=enrichment.get(
+                        "max_bill",
+                        0
+                    ),
+                    properties=enrichment.get(
+                        "properties",
+                        []
+                    )
                 )
             )
+
+            print("\n====================")
+            print("PROFILE:", profile["master_name"])
+            print("ENTITY:", entity_id)
+            print("MAX BILL:", enrichment["max_bill"])
+            print("VEHICLES:", len(enrichment["vehicles"]))
+            print("PROPERTIES:", len(
+                enrichment.get(
+                    "properties",
+                    []
+                )
+            ))
+            print("TAX PAID:", profile.get("tax_paid"))
+            print("RISK:", risk)
+            print("====================\n")
 
             # ---------------------
             # CITIZEN NODE
@@ -59,47 +80,135 @@ class GraphBuilder:
             graph.add_node(
                 entity_id,
                 type="citizen",
-                label=profile[
-                    "master_name"
-                ]
+                label=profile["master_name"]
             )
 
             # ---------------------
-            # VEHICLES
+            # TAX COMPLIANCE SCORE
             # ---------------------
 
-            for vehicle in enrichment[
-                "vehicles"
-            ]:
+            compliance_node = (
+                f"{entity_id}_COMPLIANCE"
+            )
 
-                vehicle_id = (
-                    vehicle[
-                        "vehicle_id"
-                    ]
+            graph.add_node(
+                compliance_node,
+                type="compliance",
+                label=(
+                    "TCDS "
+                    f"{risk['tax_compliance_deviation_score']}/100"
                 )
+            )
 
-                graph.add_node(
-                    vehicle_id,
-                    type="vehicle",
-                    label=vehicle[
-                        "vehicle_type"
-                    ]
-                )
-
-                graph.add_edge(
-                    entity_id,
-                    vehicle_id,
-                    relation="OWNS"
-                )
+            graph.add_edge(
+                entity_id,
+                compliance_node,
+                relation="SCORED"
+            )
 
             # ---------------------
-            # UTILITY BILL
+            # RISK NODE
             # ---------------------
 
-            if (
-                enrichment["max_bill"]
-                > 0
-            ):
+            risk_node = (
+                f"{entity_id}_RISK"
+            )
+
+            graph.add_node(
+                risk_node,
+                type="risk",
+                label=(
+                    f"{risk['risk_level']} Risk"
+                )
+            )
+
+            graph.add_edge(
+                entity_id,
+                risk_node,
+                relation="FLAGGED"
+            )
+
+            # ---------------------
+            # VEHICLE SUMMARY
+            # ---------------------
+
+            vehicle_node = (
+                f"{entity_id}_VEHICLES"
+            )
+
+            graph.add_node(
+                vehicle_node,
+                type="vehicle_summary",
+                label=(
+                    f"Vehicles: "
+                    f"{enrichment['vehicle_count']}"
+                )
+            )
+
+            graph.add_edge(
+                entity_id,
+                vehicle_node,
+                relation="OWNS"
+            )
+
+            # ---------------------
+            # LUXURY VEHICLES
+            # ---------------------
+
+            luxury_node = (
+                f"{entity_id}_LUXURY"
+            )
+
+            graph.add_node(
+                luxury_node,
+                type="luxury",
+                label=(
+                    f"Luxury: "
+                    f"{enrichment['luxury_vehicle_count']}"
+                )
+            )
+
+            graph.add_edge(
+                vehicle_node,
+                luxury_node,
+                relation="CONTAINS"
+            )
+
+            # ---------------------
+            # PROPERTY NODE
+            # ---------------------
+
+            property_count = len(
+                enrichment.get(
+                    "properties",
+                    []
+                )
+            )
+
+            property_node = (
+                f"{entity_id}_PROPERTY"
+            )
+
+            graph.add_node(
+                property_node,
+                type="property",
+                label=(
+                    f"Properties: "
+                    f"{property_count}"
+                )
+            )
+
+            graph.add_edge(
+                entity_id,
+                property_node,
+                relation="OWNS"
+            )
+
+            # ---------------------
+            # UTILITY NODE
+            # ---------------------
+
+            if enrichment["max_bill"] > 0:
 
                 utility_node = (
                     f"{entity_id}_UTILITY"
@@ -108,8 +217,10 @@ class GraphBuilder:
                 graph.add_node(
                     utility_node,
                     type="utility",
-                    label=
-                    f"PKR {enrichment['max_bill']:,}"
+                    label=(
+                        f"Bill: PKR "
+                        f"{enrichment['max_bill']:,}"
+                    )
                 )
 
                 graph.add_edge(
@@ -119,7 +230,7 @@ class GraphBuilder:
                 )
 
             # ---------------------
-            # FILER STATUS
+            # STATUS NODE
             # ---------------------
 
             status_node = (
@@ -129,9 +240,7 @@ class GraphBuilder:
             graph.add_node(
                 status_node,
                 type="status",
-                label=profile[
-                    "filer_status"
-                ]
+                label=profile["filer_status"]
             )
 
             graph.add_edge(
@@ -151,8 +260,10 @@ class GraphBuilder:
             graph.add_node(
                 income_node,
                 type="income",
-                label=
-                f"Income: PKR {profile['declared_income']:,}"
+                label=(
+                    f"Income: PKR "
+                    f"{profile['declared_income']:,}"
+                )
             )
 
             graph.add_edge(
@@ -172,8 +283,10 @@ class GraphBuilder:
             graph.add_node(
                 tax_node,
                 type="tax",
-                label=
-                f"Tax: PKR {profile['tax_paid']:,}"
+                label=(
+                    f"Tax: PKR "
+                    f"{profile.get('tax_paid', 0):,}"
+                )
             )
 
             graph.add_edge(
@@ -182,25 +295,12 @@ class GraphBuilder:
                 relation="PAID"
             )
 
-            # ---------------------
-            # COMPLIANCE SCORE
-            # ---------------------
+        print(
+            f"TOTAL NODES: {len(graph.nodes())}"
+        )
 
-            score_node = (
-                f"{entity_id}_TCDS"
-            )
-
-            graph.add_node(
-                score_node,
-                type="risk",
-                label=
-                f"TCDS {risk['tax_compliance_deviation_score']}"
-            )
-
-            graph.add_edge(
-                entity_id,
-                score_node,
-                relation="FLAGGED"
-            )
+        print(
+            f"TOTAL EDGES: {len(graph.edges())}"
+        )
 
         return graph

@@ -45,6 +45,7 @@ def get_entity_graph(entity_id: str):
     graph = builder.build_graph()
 
     if entity_id not in graph:
+
         return {
             "success": False,
             "message": f"Entity {entity_id} not found",
@@ -58,17 +59,44 @@ def get_entity_graph(entity_id: str):
         radius=1
     )
 
-    # LIMIT GRAPH SIZE FOR VISUALIZATION
-    if len(subgraph.nodes()) > 20:
+    # ----------------------------------
+    # SMART GRAPH LIMITING
+    # ----------------------------------
+
+    if len(subgraph.nodes()) > 40:
 
         important_nodes = [entity_id]
 
-        neighbors = list(
-            graph.neighbors(entity_id)
-        )[:15]
+        vehicle_nodes = []
+        other_nodes = []
 
+        for neighbor in graph.neighbors(entity_id):
+
+            node_type = (
+                graph.nodes[neighbor]
+                .get("type", "default")
+            )
+
+            if node_type == "vehicle":
+
+                vehicle_nodes.append(
+                    neighbor
+                )
+
+            else:
+
+                other_nodes.append(
+                    neighbor
+                )
+
+        # Only first 10 vehicles
         important_nodes.extend(
-            neighbors
+            vehicle_nodes[:10]
+        )
+
+        # Keep ALL important nodes
+        important_nodes.extend(
+            other_nodes
         )
 
         subgraph = graph.subgraph(
@@ -82,11 +110,17 @@ def get_entity_graph(entity_id: str):
 
         nodes.append({
             "id": str(node),
-            "label": data.get("label", str(node)),
+            "label": data.get(
+                "label",
+                str(node)
+            ),
             "type": (
                 "target"
                 if str(node) == entity_id
-                else data.get("type", "default")
+                else data.get(
+                    "type",
+                    "default"
+                )
             )
         })
 
@@ -95,7 +129,10 @@ def get_entity_graph(entity_id: str):
         edges.append({
             "source": str(source),
             "target": str(target),
-            "label": data.get("relation", "")
+            "label": data.get(
+                "relation",
+                ""
+            )
         })
 
     return {

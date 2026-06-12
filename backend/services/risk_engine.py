@@ -4,7 +4,8 @@ class RiskEngine:
         self,
         profile,
         vehicles=None,
-        utility_bill=None
+        utility_bill=None,
+        properties=None
     ):
 
         score = 0
@@ -40,9 +41,9 @@ class RiskEngine:
             )
         )
 
-        # ---------------------
-        # NON FILER
-        # ---------------------
+        # --------------------------------
+        # FILER STATUS
+        # --------------------------------
 
         if filer_status == "Non-Filer":
 
@@ -52,9 +53,9 @@ class RiskEngine:
                 "Registered as Non-Filer"
             )
 
-        # ---------------------
-        # TAX TO INCOME RATIO
-        # ---------------------
+        # --------------------------------
+        # TAX RATIO
+        # --------------------------------
 
         if income > 0:
 
@@ -62,47 +63,63 @@ class RiskEngine:
                 tax_paid / income
             ) * 100
 
-            if tax_ratio < 2:
+            if tax_ratio < 1:
 
-                score += 25
-
-                reasons.append(
-                    f"Very low tax-to-income ratio ({tax_ratio:.2f}%)"
-                )
-
-            elif tax_ratio < 5:
-
-                score += 15
+                score += 30
 
                 reasons.append(
-                    f"Low tax-to-income ratio ({tax_ratio:.2f}%)"
+                    f"Extremely low tax ratio ({tax_ratio:.2f}%)"
                 )
 
-        # ---------------------
-        # HIGH UTILITY BILL
-        # ---------------------
-
-        if utility_bill:
-
-            if utility_bill > 100000:
+            elif tax_ratio < 3:
 
                 score += 20
 
                 reasons.append(
-                    f"High utility consumption (PKR {utility_bill:,})"
+                    f"Low tax ratio ({tax_ratio:.2f}%)"
                 )
 
-            elif utility_bill > 50000:
+            elif tax_ratio < 8:
 
                 score += 10
 
                 reasons.append(
-                    f"Moderate utility consumption (PKR {utility_bill:,})"
+                    f"Moderate tax ratio ({tax_ratio:.2f}%)"
                 )
 
-        # ---------------------
-        # LUXURY VEHICLES
-        # ---------------------
+        # --------------------------------
+        # UTILITY BILL
+        # --------------------------------
+
+        if utility_bill:
+
+            if utility_bill > 150000:
+
+                score += 20
+
+                reasons.append(
+                    f"Very high utility bill (PKR {utility_bill:,})"
+                )
+
+            elif utility_bill > 100000:
+
+                score += 15
+
+                reasons.append(
+                    f"High utility bill (PKR {utility_bill:,})"
+                )
+
+            elif utility_bill > 60000:
+
+                score += 8
+
+                reasons.append(
+                    f"Moderate utility bill (PKR {utility_bill:,})"
+                )
+
+        # --------------------------------
+        # VEHICLES
+        # --------------------------------
 
         luxury_count = 0
 
@@ -119,31 +136,91 @@ class RiskEngine:
 
                     luxury_count += 1
 
-        if luxury_count >= 1:
+        if luxury_count >= 4:
+
+            score += 25
+
+            reasons.append(
+                f"Owns {luxury_count} luxury vehicles"
+            )
+
+        elif luxury_count >= 2:
+
+            score += 15
+
+            reasons.append(
+                f"Owns {luxury_count} luxury vehicles"
+            )
+
+        elif luxury_count == 1:
+
+            score += 8
+
+            reasons.append(
+                "Owns luxury vehicle"
+            )
+
+        # --------------------------------
+        # PROPERTIES
+        # --------------------------------
+
+        property_count = 0
+
+        if properties:
+
+            property_count = len(
+                properties
+            )
+
+        if property_count >= 4:
 
             score += 20
 
             reasons.append(
-                f"Owns {luxury_count} luxury vehicle(s)"
+                f"Owns {property_count} properties"
             )
 
-        # ---------------------
-        # MULTIPLE IDENTITIES
-        # ---------------------
-
-        if aliases >= 3:
+        elif property_count >= 2:
 
             score += 10
+
+            reasons.append(
+                f"Owns {property_count} properties"
+            )
+
+        elif property_count == 1:
+
+            score += 5
+
+            reasons.append(
+                "Owns property assets"
+            )
+
+        # --------------------------------
+        # ALIASES
+        # --------------------------------
+
+        if aliases >= 5:
+
+            score += 12
+
+            reasons.append(
+                "Many identity variations detected"
+            )
+
+        elif aliases >= 3:
+
+            score += 6
 
             reasons.append(
                 "Multiple identity variations detected"
             )
 
-        # ---------------------
-        # MANY LINKED RECORDS
-        # ---------------------
+        # --------------------------------
+        # LINKED RECORDS
+        # --------------------------------
 
-        if linked_records >= 5:
+        if linked_records >= 8:
 
             score += 10
 
@@ -151,9 +228,17 @@ class RiskEngine:
                 "Large number of linked records"
             )
 
-        # ---------------------
-        # INCOME VS LIFESTYLE
-        # ---------------------
+        elif linked_records >= 4:
+
+            score += 5
+
+            reasons.append(
+                "Multiple linked records"
+            )
+
+        # --------------------------------
+        # LIFESTYLE MISMATCH
+        # --------------------------------
 
         if (
             income < 1000000
@@ -161,34 +246,48 @@ class RiskEngine:
             and utility_bill > 100000
         ):
 
-            score += 15
+            score += 20
 
             reasons.append(
-                "Lifestyle appears inconsistent with declared income"
+                "Lifestyle inconsistent with declared income"
             )
 
-        # ---------------------
-        # FINAL SCORE
-        # ---------------------
+        # --------------------------------
+        # HIGH INCOME
+        # --------------------------------
+
+        if income > 8000000:
+
+            score += 5
+
+            reasons.append(
+                "High-income taxpayer"
+            )
+
+        # --------------------------------
+        # FINAL
+        # --------------------------------
 
         final_score = min(
             score,
             100
         )
 
-        risk_level = "Low"
-
-        if final_score >= 75:
+        if final_score >= 80:
 
             risk_level = "Critical"
 
-        elif final_score >= 50:
+        elif final_score >= 60:
 
             risk_level = "High"
 
-        elif final_score >= 25:
+        elif final_score >= 35:
 
             risk_level = "Medium"
+
+        else:
+
+            risk_level = "Low"
 
         return {
 

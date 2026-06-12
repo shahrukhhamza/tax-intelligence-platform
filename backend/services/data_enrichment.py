@@ -17,19 +17,27 @@ class DataEnrichment:
             "../data/utility_bills.csv"
         )
 
+        self.property_df = pd.read_csv(
+            "../data/property_records.csv"
+        )
+
     def enrich(self, profile):
 
         aliases = profile["aliases"]
 
         matched_vehicles = []
-
         matched_bills = []
+        matched_properties = []
 
         max_bill = 0
 
-        # -----------------------------
-        # VEHICLES
-        # -----------------------------
+        seen_vehicles = set()
+        seen_bills = set()
+        seen_properties = set()
+
+        # -------------------------
+        # VEHICLE MATCHING
+        # -------------------------
 
         for _, vehicle in self.vehicle_df.iterrows():
 
@@ -47,33 +55,44 @@ class DataEnrichment:
                     )
                 )
 
-                if score >= 80:
+                if score >= 92:
 
                     matched = True
                     break
 
             if matched:
 
-                matched_vehicles.append({
-                    "vehicle_id":
-                    vehicle["vehicle_id"],
+                vehicle_id = vehicle["vehicle_id"]
 
-                    "vehicle_type":
-                    vehicle["vehicle_type"],
+                if vehicle_id not in seen_vehicles:
 
-                    "engine_cc":
-                    int(vehicle["engine_cc"])
-                })
+                    seen_vehicles.add(
+                        vehicle_id
+                    )
 
-        # -----------------------------
-        # UTILITY BILLS
-        # -----------------------------
+                    matched_vehicles.append({
+
+                        "vehicle_id":
+                        vehicle_id,
+
+                        "vehicle_type":
+                        vehicle["vehicle_type"],
+
+                        "engine_cc":
+                        int(
+                            vehicle["engine_cc"]
+                        )
+                    })
+
+        # -------------------------
+        # UTILITY MATCHING
+        # -------------------------
 
         for _, utility in self.utility_df.iterrows():
 
-            consumer_name = utility[
-                "consumer_name"
-            ]
+            consumer_name = (
+                utility["consumer_name"]
+            )
 
             matched = False
 
@@ -87,7 +106,7 @@ class DataEnrichment:
                     )
                 )
 
-                if score >= 80:
+                if score >= 92:
 
                     matched = True
                     break
@@ -98,15 +117,92 @@ class DataEnrichment:
                     utility["monthly_bill"]
                 )
 
-                matched_bills.append(bill)
+                if bill not in seen_bills:
+
+                    seen_bills.add(
+                        bill
+                    )
+
+                    matched_bills.append(
+                        bill
+                    )
 
                 if bill > max_bill:
+
                     max_bill = bill
+
+        # -------------------------
+        # PROPERTY MATCHING
+        # -------------------------
+
+        for _, property_record in self.property_df.iterrows():
+
+            owner_name = property_record["owner_name"]
+
+            matched = False
+
+            for alias in aliases:
+
+                score = (
+                    self.resolver
+                    .calculate_similarity(
+                        alias,
+                        owner_name
+                    )
+                )
+
+                if score >= 92:
+
+                    matched = True
+                    break
+
+            if matched:
+
+                property_id = (
+                    property_record[
+                        "property_id"
+                    ]
+                )
+
+                if property_id not in seen_properties:
+
+                    seen_properties.add(
+                        property_id
+                    )
+
+                    matched_properties.append({
+
+                        "property_id":
+                        property_id,
+
+                        "property_type":
+                        property_record.get(
+                            "property_type",
+                            "Unknown"
+                        )
+                    })
+
+        # -------------------------
+        # LUXURY VEHICLES
+        # -------------------------
+
+        luxury_vehicle_count = len([
+
+            vehicle
+
+            for vehicle in matched_vehicles
+
+            if vehicle["engine_cc"] >= 2000
+
+        ])
 
         return {
 
             "vehicles":
             matched_vehicles,
+
+            "properties":
+            matched_properties,
 
             "utility_bills":
             matched_bills,
@@ -115,12 +211,15 @@ class DataEnrichment:
             max_bill,
 
             "vehicle_count":
-            len(matched_vehicles),
+            len(
+                matched_vehicles
+            ),
+
+            "property_count":
+            len(
+                matched_properties
+            ),
 
             "luxury_vehicle_count":
-            len([
-                v
-                for v in matched_vehicles
-                if v["engine_cc"] >= 2500
-            ])
+            luxury_vehicle_count
         }

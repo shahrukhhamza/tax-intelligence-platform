@@ -30,9 +30,9 @@ class ProfileBuilder:
 
         graph = nx.Graph()
 
-        # ----------------------------------
-        # Add Citizen Nodes
-        # ----------------------------------
+        # -----------------------------
+        # ADD NODES
+        # -----------------------------
 
         for record in records:
 
@@ -41,16 +41,18 @@ class ProfileBuilder:
                 data=record
             )
 
-        # ----------------------------------
-        # Entity Resolution
-        # ----------------------------------
+        # -----------------------------
+        # ENTITY RESOLUTION
+        # STRICT MATCHING
+        # -----------------------------
 
         for i in range(len(records)):
 
             for j in range(i + 1, len(records)):
 
                 score = (
-                    self.resolver.calculate_combined_score(
+                    self.resolver
+                    .calculate_combined_score(
                         records[i]["name"],
                         records[j]["name"],
                         records[i]["address"],
@@ -58,23 +60,31 @@ class ProfileBuilder:
                     )
                 )
 
-                if score >= 85:
+                # STRICTER THRESHOLD
+
+                if score >= 93:
 
                     graph.add_edge(
+
                         records[i]["citizen_id"],
+
                         records[j]["citizen_id"],
+
                         score=score
+
                     )
 
         profiles = []
 
         components = list(
-            nx.connected_components(graph)
+            nx.connected_components(
+                graph
+            )
         )
 
-        # ----------------------------------
-        # Build Unified Profiles
-        # ----------------------------------
+        # -----------------------------
+        # BUILD UNIFIED PROFILES
+        # -----------------------------
 
         for idx, component in enumerate(
             components,
@@ -91,14 +101,19 @@ class ProfileBuilder:
 
             taxes_paid = []
 
-            filer_status = []
+            filer_statuses = []
 
             for citizen_id in component:
 
                 record = next(
+
                     r
+
                     for r in records
-                    if r["citizen_id"] == citizen_id
+
+                    if r["citizen_id"]
+                    == citizen_id
+
                 )
 
                 component_records.append(
@@ -114,37 +129,49 @@ class ProfileBuilder:
                 )
 
                 incomes.append(
+
                     int(
                         record[
                             "declared_income"
                         ]
                     )
+
                 )
 
                 taxes_paid.append(
+
                     int(
                         record[
                             "tax_paid"
                         ]
                     )
+
                 )
 
-                filer_status.append(
+                filer_statuses.append(
+
                     record[
                         "filer_status"
                     ]
+
                 )
 
             master_record = (
                 component_records[0]
             )
 
-            profile_confidence = 92
+            # -----------------------------
+            # PROFILE CONFIDENCE
+            # -----------------------------
 
-            if len(component) == 1:
-                profile_confidence = 85
+            profile_confidence = 85
+
+            if len(component) >= 2:
+
+                profile_confidence = 90
 
             if len(component) >= 3:
+
                 profile_confidence = 95
 
             profiles.append({
@@ -156,13 +183,21 @@ class ProfileBuilder:
                 master_record["name"],
 
                 "aliases":
-                list(aliases),
+                sorted(
+                    list(
+                        aliases
+                    )
+                ),
 
                 "linked_records":
                 linked_ids,
 
+                # Use highest declared income
+
                 "declared_income":
                 max(incomes),
+
+                # Sum tax records
 
                 "tax_paid":
                 sum(taxes_paid),
@@ -171,7 +206,7 @@ class ProfileBuilder:
                 (
                     "Non-Filer"
                     if "Non-Filer"
-                    in filer_status
+                    in filer_statuses
                     else "Filer"
                 ),
 
@@ -179,5 +214,17 @@ class ProfileBuilder:
                 profile_confidence
 
             })
+
+        profiles.sort(
+
+            key=lambda x:
+
+            len(
+                x["linked_records"]
+            ),
+
+            reverse=True
+
+        )
 
         return profiles
