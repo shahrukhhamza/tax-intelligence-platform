@@ -92,7 +92,7 @@ class EntityResolver:
 
         final_score = (
 
-            name_score * 0.75 +
+            name_score * 0.85 +
 
             address_score * 0.25
 

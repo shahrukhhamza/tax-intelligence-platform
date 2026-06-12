@@ -21,7 +21,23 @@ class DataEnrichment:
             "../data/property_records.csv"
         )
 
+        # ----------------------------------
+        # CACHE
+        # ----------------------------------
+
+        self._cache = {}
+
     def enrich(self, profile):
+
+        # ----------------------------------
+        # CACHE HIT
+        # ----------------------------------
+
+        cache_key = profile["entity_id"]
+
+        if cache_key in self._cache:
+
+            return self._cache[cache_key]
 
         aliases = profile["aliases"]
 
@@ -35,9 +51,9 @@ class DataEnrichment:
         seen_bills = set()
         seen_properties = set()
 
-        # -------------------------
+        # ----------------------------------
         # VEHICLE MATCHING
-        # -------------------------
+        # ----------------------------------
 
         for _, vehicle in self.vehicle_df.iterrows():
 
@@ -84,9 +100,9 @@ class DataEnrichment:
                         )
                     })
 
-        # -------------------------
+        # ----------------------------------
         # UTILITY MATCHING
-        # -------------------------
+        # ----------------------------------
 
         for _, utility in self.utility_df.iterrows():
 
@@ -131,13 +147,15 @@ class DataEnrichment:
 
                     max_bill = bill
 
-        # -------------------------
+        # ----------------------------------
         # PROPERTY MATCHING
-        # -------------------------
+        # ----------------------------------
 
         for _, property_record in self.property_df.iterrows():
 
-            owner_name = property_record["owner_name"]
+            owner_name = (
+                property_record["owner_name"]
+            )
 
             matched = False
 
@@ -182,9 +200,9 @@ class DataEnrichment:
                         )
                     })
 
-        # -------------------------
+        # ----------------------------------
         # LUXURY VEHICLES
-        # -------------------------
+        # ----------------------------------
 
         luxury_vehicle_count = len([
 
@@ -196,7 +214,7 @@ class DataEnrichment:
 
         ])
 
-        return {
+        result = {
 
             "vehicles":
             matched_vehicles,
@@ -223,3 +241,11 @@ class DataEnrichment:
             "luxury_vehicle_count":
             luxury_vehicle_count
         }
+
+        # ----------------------------------
+        # SAVE TO CACHE
+        # ----------------------------------
+
+        self._cache[cache_key] = result
+
+        return result

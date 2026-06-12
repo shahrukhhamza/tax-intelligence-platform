@@ -19,9 +19,10 @@ class GraphBuilder:
             RiskEngine()
         )
 
-    def build_graph(self):
-
-        print("🔥 NEW GRAPH BUILDER LOADED 🔥")
+    def build_entity_graph(
+        self,
+        entity_id
+    ):
 
         graph = nx.Graph()
 
@@ -30,277 +31,347 @@ class GraphBuilder:
             .build_profiles()
         )
 
-        for profile in profiles:
+        profile = next(
 
-            entity_id = profile["entity_id"]
+            (
+                p
+                for p in profiles
+                if p["entity_id"] == entity_id
+            ),
 
-            enrichment = (
-                self.enrichment_service
-                .enrich(profile)
-            )
+            None
 
-            risk = (
-                self.risk_engine
-                .calculate_risk(
-                    profile,
-                    vehicles=enrichment.get(
-                        "vehicles",
-                        []
-                    ),
-                    utility_bill=enrichment.get(
-                        "max_bill",
-                        0
-                    ),
-                    properties=enrichment.get(
-                        "properties",
-                        []
-                    )
-                )
-            )
+        )
 
-            print("\n====================")
-            print("PROFILE:", profile["master_name"])
-            print("ENTITY:", entity_id)
-            print("MAX BILL:", enrichment["max_bill"])
-            print("VEHICLES:", len(enrichment["vehicles"]))
-            print("PROPERTIES:", len(
-                enrichment.get(
-                    "properties",
+        if not profile:
+
+            return graph
+
+        enrichment = (
+            self.enrichment_service
+            .enrich(profile)
+        )
+
+        risk = (
+            self.risk_engine
+            .calculate_risk(
+                profile,
+                vehicles=enrichment.get(
+                    "vehicles",
                     []
-                )
-            ))
-            print("TAX PAID:", profile.get("tax_paid"))
-            print("RISK:", risk)
-            print("====================\n")
-
-            # ---------------------
-            # CITIZEN NODE
-            # ---------------------
-
-            graph.add_node(
-                entity_id,
-                type="citizen",
-                label=profile["master_name"]
-            )
-
-            # ---------------------
-            # TAX COMPLIANCE SCORE
-            # ---------------------
-
-            compliance_node = (
-                f"{entity_id}_COMPLIANCE"
-            )
-
-            graph.add_node(
-                compliance_node,
-                type="compliance",
-                label=(
-                    "TCDS "
-                    f"{risk['tax_compliance_deviation_score']}/100"
-                )
-            )
-
-            graph.add_edge(
-                entity_id,
-                compliance_node,
-                relation="SCORED"
-            )
-
-            # ---------------------
-            # RISK NODE
-            # ---------------------
-
-            risk_node = (
-                f"{entity_id}_RISK"
-            )
-
-            graph.add_node(
-                risk_node,
-                type="risk",
-                label=(
-                    f"{risk['risk_level']} Risk"
-                )
-            )
-
-            graph.add_edge(
-                entity_id,
-                risk_node,
-                relation="FLAGGED"
-            )
-
-            # ---------------------
-            # VEHICLE SUMMARY
-            # ---------------------
-
-            vehicle_node = (
-                f"{entity_id}_VEHICLES"
-            )
-
-            graph.add_node(
-                vehicle_node,
-                type="vehicle_summary",
-                label=(
-                    f"Vehicles: "
-                    f"{enrichment['vehicle_count']}"
-                )
-            )
-
-            graph.add_edge(
-                entity_id,
-                vehicle_node,
-                relation="OWNS"
-            )
-
-            # ---------------------
-            # LUXURY VEHICLES
-            # ---------------------
-
-            luxury_node = (
-                f"{entity_id}_LUXURY"
-            )
-
-            graph.add_node(
-                luxury_node,
-                type="luxury",
-                label=(
-                    f"Luxury: "
-                    f"{enrichment['luxury_vehicle_count']}"
-                )
-            )
-
-            graph.add_edge(
-                vehicle_node,
-                luxury_node,
-                relation="CONTAINS"
-            )
-
-            # ---------------------
-            # PROPERTY NODE
-            # ---------------------
-
-            property_count = len(
-                enrichment.get(
+                ),
+                utility_bill=enrichment.get(
+                    "max_bill",
+                    0
+                ),
+                properties=enrichment.get(
                     "properties",
                     []
                 )
             )
+        )
 
-            property_node = (
-                f"{entity_id}_PROPERTY"
+        # --------------------------------
+        # CITIZEN
+        # --------------------------------
+
+        graph.add_node(
+
+            entity_id,
+
+            type="citizen",
+
+            label=profile["master_name"]
+
+        )
+
+        # --------------------------------
+        # COMPLIANCE
+        # --------------------------------
+
+        compliance_node = (
+            f"{entity_id}_COMPLIANCE"
+        )
+
+        graph.add_node(
+
+            compliance_node,
+
+            type="compliance",
+
+            label=(
+                f"TCDS "
+                f"{risk['tax_compliance_deviation_score']}/100"
+            )
+
+        )
+
+        graph.add_edge(
+
+            entity_id,
+
+            compliance_node,
+
+            relation="SCORED"
+
+        )
+
+        # --------------------------------
+        # RISK
+        # --------------------------------
+
+        risk_node = (
+            f"{entity_id}_RISK"
+        )
+
+        graph.add_node(
+
+            risk_node,
+
+            type="risk",
+
+            label=(
+                f"{risk['risk_level']} Risk"
+            )
+
+        )
+
+        graph.add_edge(
+
+            entity_id,
+
+            risk_node,
+
+            relation="FLAGGED"
+
+        )
+
+        # --------------------------------
+        # VEHICLES
+        # --------------------------------
+
+        vehicle_node = (
+            f"{entity_id}_VEHICLES"
+        )
+
+        graph.add_node(
+
+            vehicle_node,
+
+            type="vehicle_summary",
+
+            label=(
+                f"Vehicles: "
+                f"{enrichment['vehicle_count']}"
+            )
+
+        )
+
+        graph.add_edge(
+
+            entity_id,
+
+            vehicle_node,
+
+            relation="OWNS"
+
+        )
+
+        # --------------------------------
+        # LUXURY
+        # --------------------------------
+
+        luxury_node = (
+            f"{entity_id}_LUXURY"
+        )
+
+        graph.add_node(
+
+            luxury_node,
+
+            type="luxury",
+
+            label=(
+                f"Luxury: "
+                f"{enrichment['luxury_vehicle_count']}"
+            )
+
+        )
+
+        graph.add_edge(
+
+            vehicle_node,
+
+            luxury_node,
+
+            relation="CONTAINS"
+
+        )
+
+        # --------------------------------
+        # PROPERTY
+        # --------------------------------
+
+        property_node = (
+            f"{entity_id}_PROPERTY"
+        )
+
+        graph.add_node(
+
+            property_node,
+
+            type="property",
+
+            label=(
+                f"Properties: "
+                f"{len(enrichment['properties'])}"
+            )
+
+        )
+
+        graph.add_edge(
+
+            entity_id,
+
+            property_node,
+
+            relation="OWNS"
+
+        )
+
+        # --------------------------------
+        # UTILITY
+        # --------------------------------
+
+        if enrichment["max_bill"] > 0:
+
+            utility_node = (
+                f"{entity_id}_UTILITY"
             )
 
             graph.add_node(
-                property_node,
-                type="property",
+
+                utility_node,
+
+                type="utility",
+
                 label=(
-                    f"Properties: "
-                    f"{property_count}"
+                    f"Bill: PKR "
+                    f"{enrichment['max_bill']:,}"
                 )
+
             )
 
             graph.add_edge(
+
                 entity_id,
-                property_node,
-                relation="OWNS"
+
+                utility_node,
+
+                relation="PAYS"
+
             )
 
-            # ---------------------
-            # UTILITY NODE
-            # ---------------------
+        # --------------------------------
+        # STATUS
+        # --------------------------------
 
-            if enrichment["max_bill"] > 0:
+        status_node = (
+            f"{entity_id}_STATUS"
+        )
 
-                utility_node = (
-                    f"{entity_id}_UTILITY"
-                )
+        graph.add_node(
 
-                graph.add_node(
-                    utility_node,
-                    type="utility",
-                    label=(
-                        f"Bill: PKR "
-                        f"{enrichment['max_bill']:,}"
-                    )
-                )
+            status_node,
 
-                graph.add_edge(
-                    entity_id,
-                    utility_node,
-                    relation="PAYS"
-                )
+            type="status",
 
-            # ---------------------
-            # STATUS NODE
-            # ---------------------
+            label=profile["filer_status"]
 
-            status_node = (
-                f"{entity_id}_STATUS"
+        )
+
+        graph.add_edge(
+
+            entity_id,
+
+            status_node,
+
+            relation="STATUS"
+
+        )
+
+        # --------------------------------
+        # INCOME
+        # --------------------------------
+
+        income_node = (
+            f"{entity_id}_INCOME"
+        )
+
+        graph.add_node(
+
+            income_node,
+
+            type="income",
+
+            label=(
+                f"Income: PKR "
+                f"{profile['declared_income']:,}"
             )
 
-            graph.add_node(
-                status_node,
-                type="status",
-                label=profile["filer_status"]
+        )
+
+        graph.add_edge(
+
+            entity_id,
+
+            income_node,
+
+            relation="DECLARES"
+
+        )
+
+        # --------------------------------
+        # TAX
+        # --------------------------------
+
+        tax_node = (
+            f"{entity_id}_TAX"
+        )
+
+        graph.add_node(
+
+            tax_node,
+
+            type="tax",
+
+            label=(
+                f"Tax: PKR "
+                f"{profile.get('tax_paid', 0):,}"
             )
 
-            graph.add_edge(
-                entity_id,
-                status_node,
-                relation="STATUS"
-            )
+        )
 
-            # ---------------------
-            # INCOME NODE
-            # ---------------------
+        graph.add_edge(
 
-            income_node = (
-                f"{entity_id}_INCOME"
-            )
+            entity_id,
 
-            graph.add_node(
-                income_node,
-                type="income",
-                label=(
-                    f"Income: PKR "
-                    f"{profile['declared_income']:,}"
-                )
-            )
+            tax_node,
 
-            graph.add_edge(
-                entity_id,
-                income_node,
-                relation="DECLARES"
-            )
+            relation="PAID"
 
-            # ---------------------
-            # TAX NODE
-            # ---------------------
-
-            tax_node = (
-                f"{entity_id}_TAX"
-            )
-
-            graph.add_node(
-                tax_node,
-                type="tax",
-                label=(
-                    f"Tax: PKR "
-                    f"{profile.get('tax_paid', 0):,}"
-                )
-            )
-
-            graph.add_edge(
-                entity_id,
-                tax_node,
-                relation="PAID"
-            )
-
-        print(
-            f"TOTAL NODES: {len(graph.nodes())}"
         )
 
         print(
-            f"TOTAL EDGES: {len(graph.edges())}"
+            f"ENTITY GRAPH {entity_id}"
+        )
+
+        print(
+            f"NODES: {len(graph.nodes())}"
+        )
+
+        print(
+            f"EDGES: {len(graph.edges())}"
         )
 
         return graph

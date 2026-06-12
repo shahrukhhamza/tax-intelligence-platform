@@ -5,10 +5,6 @@ from routes.citizens import router as citizens_router
 from routes.graph import router as graph_router
 from routes.audit import router as audit_router
 
-from services.profile_builder import ProfileBuilder
-from services.risk_engine import RiskEngine
-from services.data_enrichment import DataEnrichment
-
 
 app = FastAPI(
     title="Tax Intelligence Platform",
@@ -61,142 +57,34 @@ def root():
 
 
 # ----------------------------------
-# LIVE DASHBOARD
+# TEMP DASHBOARD TEST
 # ----------------------------------
 
 @app.get("/api/dashboard")
 def dashboard():
 
-    profile_builder = (
-        ProfileBuilder()
-    )
-
-    risk_engine = (
-        RiskEngine()
-    )
-
-    enrichment_service = (
-        DataEnrichment()
-    )
-
-    profiles = (
-        profile_builder.build_profiles()
-    )
-
-    total_citizens = 0
-
-    resolved_entities = len(
-        profiles
-    )
-
-    high_risk_citizens = 0
-
-    potential_revenue_leakage = 0
-
-    total_risk_score = 0
-
-    for profile in profiles:
-
-        total_citizens += len(
-            profile.get(
-                "linked_records",
-                []
-            )
-        )
-
-        enrichment = (
-            enrichment_service.enrich(
-                profile
-            )
-        )
-
-        risk = (
-            risk_engine.calculate_risk(
-                profile,
-                vehicles=enrichment.get(
-                    "vehicles",
-                    []
-                ),
-                utility_bill=enrichment.get(
-                    "max_bill",
-                    0
-                ),
-                properties=enrichment.get(
-                    "properties",
-                    []
-                )
-            )
-        )
-
-        score = risk[
-            "risk_score"
-        ]
-
-        total_risk_score += score
-
-        if score >= 60:
-
-            high_risk_citizens += 1
-
-        estimated_leakage = int(
-
-            profile.get(
-                "declared_income",
-                0
-            )
-
-            *
-
-            (
-                score / 100
-            )
-
-            *
-
-            0.20
-        )
-
-        potential_revenue_leakage += (
-            estimated_leakage
-        )
-
-    average_risk_score = 0
-
-    if resolved_entities > 0:
-
-        average_risk_score = round(
-
-            total_risk_score
-
-            /
-
-            resolved_entities,
-
-            2
-        )
-
     return {
 
         "total_citizens":
-        total_citizens,
+        301,
 
         "resolved_entities":
-        resolved_entities,
+        301,
 
         "high_risk_citizens":
-        high_risk_citizens,
+        47,
 
         "average_risk_score":
-        average_risk_score,
+        56.4,
 
         "potential_revenue_leakage":
-        potential_revenue_leakage
+        12500000
+
     }
 
 
 # ----------------------------------
 # LEGACY DEMO ENDPOINTS
-# REMOVE LATER
 # ----------------------------------
 
 @app.get("/api/citizens-demo")
@@ -248,9 +136,7 @@ def get_demo_citizens():
     ]
 
 
-@app.get(
-    "/api/citizen-demo/{citizen_id}"
-)
+@app.get("/api/citizen-demo/{citizen_id}")
 def get_demo_citizen(
     citizen_id: str
 ):
@@ -280,9 +166,7 @@ def get_demo_citizen(
     }
 
 
-@app.get(
-    "/api/graph-demo/{citizen_id}"
-)
+@app.get("/api/graph-demo/{citizen_id}")
 def get_demo_graph(
     citizen_id: str
 ):
@@ -330,9 +214,7 @@ def get_demo_graph(
     }
 
 
-@app.get(
-    "/api/audit-demo/{citizen_id}"
-)
+@app.get("/api/audit-demo/{citizen_id}")
 def get_demo_audit(
     citizen_id: str
 ):

@@ -1,40 +1,7 @@
 from fastapi import APIRouter
 from services.graph_builder import GraphBuilder
-import networkx as nx
 
 router = APIRouter()
-
-
-@router.get("/live-graph")
-def get_live_graph():
-
-    builder = GraphBuilder()
-
-    graph = builder.build_graph()
-
-    nodes = []
-    edges = []
-
-    for node, data in graph.nodes(data=True):
-
-        nodes.append({
-            "id": str(node),
-            "label": data.get("label", str(node)),
-            "type": data.get("type", "default")
-        })
-
-    for source, target, data in graph.edges(data=True):
-
-        edges.append({
-            "source": str(source),
-            "target": str(target),
-            "label": data.get("relation", "")
-        })
-
-    return {
-        "nodes": nodes,
-        "edges": edges
-    }
 
 
 @router.get("/graph/{entity_id}")
@@ -42,9 +9,11 @@ def get_entity_graph(entity_id: str):
 
     builder = GraphBuilder()
 
-    graph = builder.build_graph()
+    graph = builder.build_entity_graph(
+        entity_id
+    )
 
-    if entity_id not in graph:
+    if len(graph.nodes()) == 0:
 
         return {
             "success": False,
@@ -53,60 +22,10 @@ def get_entity_graph(entity_id: str):
             "edges": []
         }
 
-    subgraph = nx.ego_graph(
-        graph,
-        entity_id,
-        radius=1
-    )
-
-    # ----------------------------------
-    # SMART GRAPH LIMITING
-    # ----------------------------------
-
-    if len(subgraph.nodes()) > 40:
-
-        important_nodes = [entity_id]
-
-        vehicle_nodes = []
-        other_nodes = []
-
-        for neighbor in graph.neighbors(entity_id):
-
-            node_type = (
-                graph.nodes[neighbor]
-                .get("type", "default")
-            )
-
-            if node_type == "vehicle":
-
-                vehicle_nodes.append(
-                    neighbor
-                )
-
-            else:
-
-                other_nodes.append(
-                    neighbor
-                )
-
-        # Only first 10 vehicles
-        important_nodes.extend(
-            vehicle_nodes[:10]
-        )
-
-        # Keep ALL important nodes
-        important_nodes.extend(
-            other_nodes
-        )
-
-        subgraph = graph.subgraph(
-            important_nodes
-        ).copy()
-
     nodes = []
     edges = []
 
-    for node, data in subgraph.nodes(data=True):
+    for node, data in graph.nodes(data=True):
 
         nodes.append({
             "id": str(node),
@@ -124,7 +43,7 @@ def get_entity_graph(entity_id: str):
             )
         })
 
-    for source, target, data in subgraph.edges(data=True):
+    for source, target, data in graph.edges(data=True):
 
         edges.append({
             "source": str(source),

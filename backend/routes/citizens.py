@@ -28,8 +28,18 @@ def get_live_citizens():
 
         risk = risk_engine.calculate_risk(
             profile,
-            vehicles=enrichment["vehicles"],
-            utility_bill=enrichment["max_bill"]
+            vehicles=enrichment.get(
+                "vehicles",
+                []
+            ),
+            utility_bill=enrichment.get(
+                "max_bill",
+                0
+            ),
+            properties=enrichment.get(
+                "properties",
+                []
+            )
         )
 
         results.append({
@@ -48,6 +58,9 @@ def get_live_citizens():
 
             "vehicle_count":
             enrichment["vehicle_count"],
+
+            "property_count":
+            enrichment["property_count"],
 
             "max_utility_bill":
             enrichment["max_bill"]
@@ -79,8 +92,18 @@ def get_live_citizen(entity_id: str):
 
             risk = risk_engine.calculate_risk(
                 profile,
-                vehicles=enrichment["vehicles"],
-                utility_bill=enrichment["max_bill"]
+                vehicles=enrichment.get(
+                    "vehicles",
+                    []
+                ),
+                utility_bill=enrichment.get(
+                    "max_bill",
+                    0
+                ),
+                properties=enrichment.get(
+                    "properties",
+                    []
+                )
             )
 
             return {
@@ -115,16 +138,20 @@ def get_live_citizen(entity_id: str):
                 "vehicle_count":
                 enrichment["vehicle_count"],
 
+                "property_count":
+                enrichment["property_count"],
+
                 "luxury_vehicle_count":
-                enrichment[
-                    "luxury_vehicle_count"
-                ],
+                enrichment["luxury_vehicle_count"],
 
                 "max_utility_bill":
                 enrichment["max_bill"],
 
                 "vehicles":
-                enrichment["vehicles"]
+                enrichment["vehicles"],
+
+                "properties":
+                enrichment["properties"]
 
             }
 
