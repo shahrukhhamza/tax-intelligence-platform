@@ -1,301 +1,301 @@
 citizen_id,name,address,declared_income,tax_paid,filer_status
-CIT0001,محمد احمد,House 45 DHA Lahore,1435630,468439,Filer
-CIT0002,Aly Khan,Street 10 G11 Islamabad,667172,319373,Filer
-CIT0003,Ali Khan,H#45 DHA Lhr,2012071,15670,Filer
-CIT0004,Muhammad Ahmd,House 12 Street 10 G11 Islamabad,2315268,375466,Filer
-CIT0005,Ahmed Raza,Phase 8 Bahria RWP,1882873,407893,Filer
-CIT0006,Aly Khan,Street 10 G11 Islamabad,906899,128008,Filer
-CIT0007,M Ahmed,Street 10 G11 Islamabad,1177961,74568,Non-Filer
-CIT0008,Aly Khan,House 12 Street 10 G11 Islamabad,2902136,23362,Non-Filer
-CIT0009,علی خان,Street 10 G11 Islamabad,1548058,99381,Filer
-CIT0010,Ahmed Raza,House 12 Street 10 G11 Islamabad,2715165,267537,Non-Filer
-CIT0011,Muhammad Ahmed,H#45 DHA Lhr,285873,443291,Filer
-CIT0012,Ahmad Raza,H#45 DHA Lhr,1783650,204836,Filer
-CIT0013,علی خان,H#12 St10 G11 Isb,580839,307526,Non-Filer
-CIT0014,Aly Khan,H#12 St10 G11 Isb,246282,243667,Filer
-CIT0015,احمد رضا,H#45 DHA Lhr,2500178,475486,Filer
-CIT0016,محمد احمد,Phase 8 Bahria RWP,1960083,314765,Non-Filer
-CIT0017,Aly Khan,House 45 DHA Lahore,2027818,22078,Filer
-CIT0018,Muhammad Ahmd,H#12 St10 G11 Isb,1460683,202001,Filer
-CIT0019,Muhammad Ahmed,Bahria Phase 8 Rawalpindi,1092587,415798,Non-Filer
-CIT0020,Ali Khan,Phase 8 Bahria RWP,1191598,277649,Non-Filer
-CIT0021,احمد رضا,Street 10 G11 Islamabad,2409843,448159,Non-Filer
-CIT0022,Ali Khan,H#45 DHA Lhr,2288054,237458,Non-Filer
-CIT0023,Ahmed Raza,H#45 DHA Lhr,844481,303864,Filer
-CIT0024,Ahmed Raza,Street 10 G11 Islamabad,1053333,311359,Filer
-CIT0025,Ahmad Raza,Street 10 G11 Islamabad,2512822,365512,Non-Filer
-CIT0026,M Ahmed,Bahria Phase 8 Rawalpindi,2972344,219063,Filer
-CIT0027,Aly Khan,Phase 8 Bahria RWP,1107718,90343,Non-Filer
-CIT0028,Ahmed Raza,House 12 Street 10 G11 Islamabad,1272681,43523,Non-Filer
-CIT0029,Ali Khan,Street 10 G11 Islamabad,304206,489804,Filer
-CIT0030,Muhammad Ahmed,House 12 Street 10 G11 Islamabad,2654524,267604,Filer
-CIT0031,M Ahmed,H#12 St10 G11 Isb,2657019,133579,Non-Filer
-CIT0032,Muhammad Ahmd,Phase 8 Bahria RWP,2272491,316059,Non-Filer
-CIT0033,Muhammad Ahmed,Phase 8 Bahria RWP,2078245,484998,Non-Filer
-CIT0034,احمد رضا,Street 10 G11 Islamabad,1499836,346367,Non-Filer
-CIT0035,علی خان,H#45 DHA Lhr,1441746,102355,Non-Filer
-CIT0036,Muhammad Ahmed,Bahria Phase 8 Rawalpindi,703617,132611,Non-Filer
-CIT0037,علی خان,House 45 DHA Lahore,221456,336831,Non-Filer
-CIT0038,احمد رضا,H#45 DHA Lhr,2638303,126873,Filer
-CIT0039,Muhammad Ahmd,H#45 DHA Lhr,767936,383190,Non-Filer
-CIT0040,Ali Khan,House 12 Street 10 G11 Islamabad,2865187,365127,Filer
-CIT0041,احمد رضا,House 12 Street 10 G11 Islamabad,2201468,175891,Filer
-CIT0042,محمد احمد,H#45 DHA Lhr,1582548,157593,Filer
-CIT0043,Aly Khan,House 12 Street 10 G11 Islamabad,2748650,63380,Filer
-CIT0044,Muhammad Ahmd,H#45 DHA Lhr,1546990,278285,Filer
-CIT0045,M Ahmed,House 45 DHA Lahore,1696006,121749,Non-Filer
-CIT0046,Ali Khan,H#12 St10 G11 Isb,922843,477468,Non-Filer
-CIT0047,Ahmad Raza,House 45 DHA Lahore,1661174,354724,Non-Filer
-CIT0048,Aly Khan,House 12 Street 10 G11 Islamabad,1547558,163908,Filer
-CIT0049,Ali Khan,Phase 8 Bahria RWP,1827703,468224,Non-Filer
-CIT0050,Ahmed Raza,H#12 St10 G11 Isb,1186654,180762,Filer
-CIT0051,علی خان,H#12 St10 G11 Isb,206156,236517,Filer
-CIT0052,Ahmad Raza,House 12 Street 10 G11 Islamabad,560274,291565,Non-Filer
-CIT0053,Ahmad Raza,Phase 8 Bahria RWP,537702,446192,Filer
-CIT0054,احمد رضا,H#12 St10 G11 Isb,247719,345298,Filer
-CIT0055,M Ahmed,House 12 Street 10 G11 Islamabad,618932,303791,Non-Filer
-CIT0056,علی خان,Phase 8 Bahria RWP,2710907,378671,Non-Filer
-CIT0057,M Ahmed,Street 10 G11 Islamabad,830689,390348,Filer
-CIT0058,Aly Khan,H#45 DHA Lhr,217799,110609,Filer
-CIT0059,Ahmad Raza,House 12 Street 10 G11 Islamabad,1271333,22933,Filer
-CIT0060,Aly Khan,Phase 8 Bahria RWP,2912162,189542,Filer
-CIT0061,علی خان,H#45 DHA Lhr,437749,117342,Filer
-CIT0062,Ahmad Raza,H#45 DHA Lhr,1274921,392891,Filer
-CIT0063,Muhammad Ahmd,Bahria Phase 8 Rawalpindi,1280497,183543,Non-Filer
-CIT0064,Muhammad Ahmd,Street 10 G11 Islamabad,1703565,384002,Filer
-CIT0065,Muhammad Ahmed,House 45 DHA Lahore,2633010,30649,Filer
-CIT0066,Muhammad Ahmd,H#12 St10 G11 Isb,852144,320765,Non-Filer
-CIT0067,علی خان,Bahria Phase 8 Rawalpindi,1193494,478241,Filer
-CIT0068,احمد رضا,H#45 DHA Lhr,1070013,208901,Non-Filer
-CIT0069,M Ahmed,House 12 Street 10 G11 Islamabad,606420,143145,Filer
-CIT0070,علی خان,House 12 Street 10 G11 Islamabad,2198733,415133,Non-Filer
-CIT0071,احمد رضا,Bahria Phase 8 Rawalpindi,2539439,394435,Filer
-CIT0072,محمد احمد,Phase 8 Bahria RWP,574313,405712,Non-Filer
-CIT0073,Aly Khan,H#12 St10 G11 Isb,628587,420547,Non-Filer
-CIT0074,Aly Khan,H#45 DHA Lhr,2264669,154867,Non-Filer
-CIT0075,علی خان,House 12 Street 10 G11 Islamabad,2080277,268538,Filer
-CIT0076,احمد رضا,House 45 DHA Lahore,1420225,465271,Non-Filer
-CIT0077,Ahmad Raza,H#45 DHA Lhr,1203484,119120,Filer
-CIT0078,علی خان,House 45 DHA Lahore,1482301,124166,Filer
-CIT0079,M Ahmed,H#45 DHA Lhr,2385643,249172,Non-Filer
-CIT0080,Muhammad Ahmd,Street 10 G11 Islamabad,688660,70041,Non-Filer
-CIT0081,M Ahmed,House 45 DHA Lahore,2153237,143351,Filer
-CIT0082,M Ahmed,House 12 Street 10 G11 Islamabad,1571805,185277,Non-Filer
-CIT0083,محمد احمد,H#12 St10 G11 Isb,2316947,265219,Non-Filer
-CIT0084,Ahmed Raza,H#12 St10 G11 Isb,1826408,94817,Non-Filer
-CIT0085,Ahmed Raza,House 45 DHA Lahore,1459807,459020,Filer
-CIT0086,Ahmed Raza,House 45 DHA Lahore,943238,132553,Non-Filer
-CIT0087,Muhammad Ahmed,Street 10 G11 Islamabad,1357783,251748,Non-Filer
-CIT0088,علی خان,Bahria Phase 8 Rawalpindi,2965526,44836,Non-Filer
-CIT0089,Muhammad Ahmd,House 45 DHA Lahore,939436,56578,Non-Filer
-CIT0090,Muhammad Ahmd,H#12 St10 G11 Isb,747774,268457,Non-Filer
-CIT0091,Muhammad Ahmd,H#12 St10 G11 Isb,1564190,56193,Filer
-CIT0092,علی خان,H#12 St10 G11 Isb,540308,426265,Filer
-CIT0093,Ali Khan,House 45 DHA Lahore,1097966,324772,Filer
-CIT0094,M Ahmed,Phase 8 Bahria RWP,306394,17698,Non-Filer
-CIT0095,علی خان,H#12 St10 G11 Isb,1551803,154262,Filer
-CIT0096,Ahmad Raza,H#45 DHA Lhr,990916,34949,Filer
-CIT0097,Muhammad Ahmd,House 45 DHA Lahore,2954617,190024,Non-Filer
-CIT0098,Ahmad Raza,Street 10 G11 Islamabad,618199,456814,Filer
-CIT0099,محمد احمد,Phase 8 Bahria RWP,1444921,341611,Non-Filer
-CIT0100,Ahmed Raza,H#45 DHA Lhr,1990171,78711,Non-Filer
-CIT0101,محمد احمد,H#12 St10 G11 Isb,820904,465744,Non-Filer
-CIT0102,علی خان,H#45 DHA Lhr,2465411,372847,Non-Filer
-CIT0103,Muhammad Ahmd,Phase 8 Bahria RWP,772444,393034,Non-Filer
-CIT0104,Muhammad Ahmd,Bahria Phase 8 Rawalpindi,2467883,494643,Filer
-CIT0105,علی خان,H#45 DHA Lhr,465981,255302,Non-Filer
-CIT0106,علی خان,House 12 Street 10 G11 Islamabad,2962144,177176,Filer
-CIT0107,احمد رضا,Bahria Phase 8 Rawalpindi,1617211,239685,Filer
-CIT0108,Ali Khan,House 12 Street 10 G11 Islamabad,1809633,33220,Filer
-CIT0109,علی خان,H#45 DHA Lhr,1483089,186640,Filer
-CIT0110,Muhammad Ahmed,Phase 8 Bahria RWP,1206045,228280,Non-Filer
-CIT0111,محمد احمد,Phase 8 Bahria RWP,1293117,395133,Filer
-CIT0112,احمد رضا,H#12 St10 G11 Isb,809140,224529,Non-Filer
-CIT0113,علی خان,House 12 Street 10 G11 Islamabad,2119780,285965,Non-Filer
-CIT0114,علی خان,H#45 DHA Lhr,1737808,453973,Filer
-CIT0115,Ali Khan,H#45 DHA Lhr,2575651,372204,Non-Filer
-CIT0116,محمد احمد,Street 10 G11 Islamabad,2951426,26845,Non-Filer
-CIT0117,Aly Khan,H#45 DHA Lhr,1876083,67978,Filer
-CIT0118,احمد رضا,House 45 DHA Lahore,2235819,34314,Non-Filer
-CIT0119,Muhammad Ahmed,Street 10 G11 Islamabad,1299762,349618,Filer
-CIT0120,Muhammad Ahmd,Street 10 G11 Islamabad,1520939,403815,Filer
-CIT0121,علی خان,House 12 Street 10 G11 Islamabad,2935008,341164,Filer
-CIT0122,Ahmed Raza,Phase 8 Bahria RWP,2838038,435518,Filer
-CIT0123,Ahmed Raza,House 45 DHA Lahore,1450305,498709,Non-Filer
-CIT0124,M Ahmed,House 12 Street 10 G11 Islamabad,1354341,469471,Non-Filer
-CIT0125,Muhammad Ahmed,Bahria Phase 8 Rawalpindi,2461739,221884,Filer
-CIT0126,Aly Khan,H#45 DHA Lhr,721330,226769,Filer
-CIT0127,Ali Khan,H#12 St10 G11 Isb,2995229,85558,Filer
-CIT0128,Muhammad Ahmd,Street 10 G11 Islamabad,2483313,29366,Non-Filer
-CIT0129,Ali Khan,H#12 St10 G11 Isb,2724268,13694,Non-Filer
-CIT0130,Ali Khan,H#45 DHA Lhr,2336894,199405,Non-Filer
-CIT0131,Muhammad Ahmed,Phase 8 Bahria RWP,1157617,378594,Filer
-CIT0132,Ahmed Raza,H#45 DHA Lhr,2520585,227328,Non-Filer
-CIT0133,Muhammad Ahmd,House 12 Street 10 G11 Islamabad,537723,146955,Non-Filer
-CIT0134,احمد رضا,H#12 St10 G11 Isb,1837811,85257,Filer
-CIT0135,علی خان,Bahria Phase 8 Rawalpindi,365665,194703,Filer
-CIT0136,احمد رضا,H#45 DHA Lhr,2980553,389077,Filer
-CIT0137,Aly Khan,Street 10 G11 Islamabad,2147620,433936,Non-Filer
-CIT0138,محمد احمد,House 12 Street 10 G11 Islamabad,209568,476097,Non-Filer
-CIT0139,Muhammad Ahmd,H#12 St10 G11 Isb,1312010,306773,Filer
-CIT0140,Ahmed Raza,House 12 Street 10 G11 Islamabad,1899886,497337,Non-Filer
-CIT0141,Muhammad Ahmd,Bahria Phase 8 Rawalpindi,1706979,26841,Non-Filer
-CIT0142,Muhammad Ahmed,Phase 8 Bahria RWP,1372530,110547,Filer
-CIT0143,احمد رضا,House 45 DHA Lahore,765542,162387,Non-Filer
-CIT0144,Muhammad Ahmed,House 12 Street 10 G11 Islamabad,1292642,454344,Non-Filer
-CIT0145,علی خان,H#12 St10 G11 Isb,1752714,405288,Filer
-CIT0146,علی خان,Phase 8 Bahria RWP,288917,199405,Filer
-CIT0147,احمد رضا,H#45 DHA Lhr,2280599,126334,Non-Filer
-CIT0148,Aly Khan,Bahria Phase 8 Rawalpindi,2664300,130273,Non-Filer
-CIT0149,Muhammad Ahmd,House 12 Street 10 G11 Islamabad,908025,355576,Non-Filer
-CIT0150,Ahmed Raza,H#12 St10 G11 Isb,933055,264473,Filer
-CIT0151,علی خان,House 12 Street 10 G11 Islamabad,702880,37440,Non-Filer
-CIT0152,Muhammad Ahmd,House 45 DHA Lahore,908147,322108,Filer
-CIT0153,Muhammad Ahmed,Phase 8 Bahria RWP,1841950,280001,Non-Filer
-CIT0154,Aly Khan,H#45 DHA Lhr,882514,70322,Non-Filer
-CIT0155,Ahmad Raza,House 12 Street 10 G11 Islamabad,2457668,227517,Non-Filer
-CIT0156,Muhammad Ahmed,Street 10 G11 Islamabad,853942,295046,Non-Filer
-CIT0157,M Ahmed,Street 10 G11 Islamabad,265453,299092,Filer
-CIT0158,علی خان,Phase 8 Bahria RWP,707536,404680,Non-Filer
-CIT0159,احمد رضا,H#12 St10 G11 Isb,1960711,424772,Filer
-CIT0160,Ali Khan,H#12 St10 G11 Isb,327934,151448,Filer
-CIT0161,علی خان,Bahria Phase 8 Rawalpindi,1997531,340559,Non-Filer
-CIT0162,Ahmed Raza,H#45 DHA Lhr,2917984,168752,Non-Filer
-CIT0163,M Ahmed,H#12 St10 G11 Isb,2751717,96591,Filer
-CIT0164,محمد احمد,House 12 Street 10 G11 Islamabad,1383927,128035,Non-Filer
-CIT0165,Muhammad Ahmd,House 45 DHA Lahore,980786,273054,Filer
-CIT0166,Aly Khan,H#12 St10 G11 Isb,1664281,415444,Filer
-CIT0167,M Ahmed,House 45 DHA Lahore,1314480,61608,Non-Filer
-CIT0168,علی خان,Street 10 G11 Islamabad,2750624,218588,Non-Filer
-CIT0169,محمد احمد,H#45 DHA Lhr,1469691,442189,Non-Filer
-CIT0170,Aly Khan,House 45 DHA Lahore,761578,299750,Non-Filer
-CIT0171,محمد احمد,Street 10 G11 Islamabad,1075367,363081,Non-Filer
-CIT0172,Muhammad Ahmd,House 45 DHA Lahore,975885,405846,Filer
-CIT0173,Aly Khan,H#12 St10 G11 Isb,2608072,207310,Non-Filer
-CIT0174,علی خان,House 45 DHA Lahore,878149,111059,Filer
-CIT0175,Muhammad Ahmd,H#45 DHA Lhr,1023131,173045,Non-Filer
-CIT0176,محمد احمد,House 45 DHA Lahore,1418627,185372,Non-Filer
-CIT0177,علی خان,Bahria Phase 8 Rawalpindi,1267766,464470,Filer
-CIT0178,Muhammad Ahmed,House 12 Street 10 G11 Islamabad,1478812,469912,Non-Filer
-CIT0179,Aly Khan,Phase 8 Bahria RWP,1679050,250121,Filer
-CIT0180,Ahmad Raza,H#12 St10 G11 Isb,693008,125045,Filer
-CIT0181,احمد رضا,H#12 St10 G11 Isb,2247789,108274,Filer
-CIT0182,M Ahmed,Phase 8 Bahria RWP,2775164,120333,Non-Filer
-CIT0183,Muhammad Ahmed,H#45 DHA Lhr,1802511,309490,Non-Filer
-CIT0184,Muhammad Ahmd,H#45 DHA Lhr,1050257,351944,Non-Filer
-CIT0185,احمد رضا,Phase 8 Bahria RWP,1606011,339154,Non-Filer
-CIT0186,محمد احمد,Phase 8 Bahria RWP,2647388,45483,Filer
-CIT0187,Muhammad Ahmd,Street 10 G11 Islamabad,1887298,170599,Filer
-CIT0188,علی خان,House 12 Street 10 G11 Islamabad,637070,486062,Non-Filer
-CIT0189,M Ahmed,House 12 Street 10 G11 Islamabad,1735011,229047,Non-Filer
-CIT0190,محمد احمد,H#12 St10 G11 Isb,1799607,399070,Non-Filer
-CIT0191,Ahmed Raza,House 45 DHA Lahore,972631,140442,Filer
-CIT0192,Ahmad Raza,House 12 Street 10 G11 Islamabad,718368,134194,Non-Filer
-CIT0193,Ahmad Raza,House 45 DHA Lahore,2555856,77132,Filer
-CIT0194,محمد احمد,Street 10 G11 Islamabad,215410,326206,Filer
-CIT0195,محمد احمد,H#12 St10 G11 Isb,2047023,292330,Filer
-CIT0196,M Ahmed,H#12 St10 G11 Isb,1763221,387869,Filer
-CIT0197,Muhammad Ahmed,House 45 DHA Lahore,1734356,114856,Filer
-CIT0198,Ahmad Raza,H#45 DHA Lhr,764247,498051,Non-Filer
-CIT0199,M Ahmed,House 12 Street 10 G11 Islamabad,2075860,63232,Filer
-CIT0200,Ahmed Raza,H#12 St10 G11 Isb,1804411,285622,Filer
-CIT0201,احمد رضا,House 12 Street 10 G11 Islamabad,961753,412127,Non-Filer
-CIT0202,Ali Khan,H#12 St10 G11 Isb,2325989,378278,Filer
-CIT0203,Ahmed Raza,Bahria Phase 8 Rawalpindi,1992159,164591,Filer
-CIT0204,محمد احمد,Bahria Phase 8 Rawalpindi,401436,89550,Filer
-CIT0205,احمد رضا,House 45 DHA Lahore,1604728,266807,Filer
-CIT0206,M Ahmed,Street 10 G11 Islamabad,1500153,111804,Filer
-CIT0207,Muhammad Ahmd,Phase 8 Bahria RWP,1251137,317676,Non-Filer
-CIT0208,علی خان,H#45 DHA Lhr,821151,366172,Filer
-CIT0209,Muhammad Ahmed,House 12 Street 10 G11 Islamabad,567816,166466,Filer
-CIT0210,Ahmad Raza,House 12 Street 10 G11 Islamabad,2149812,423923,Filer
-CIT0211,احمد رضا,Bahria Phase 8 Rawalpindi,2330035,251071,Non-Filer
-CIT0212,Muhammad Ahmd,Bahria Phase 8 Rawalpindi,208534,243368,Non-Filer
-CIT0213,Aly Khan,Street 10 G11 Islamabad,801247,315167,Filer
-CIT0214,M Ahmed,Bahria Phase 8 Rawalpindi,858048,348500,Filer
-CIT0215,Ali Khan,Street 10 G11 Islamabad,1202246,334675,Non-Filer
-CIT0216,علی خان,House 12 Street 10 G11 Islamabad,1870470,87839,Non-Filer
-CIT0217,Ali Khan,House 12 Street 10 G11 Islamabad,2376302,203370,Filer
-CIT0218,محمد احمد,Street 10 G11 Islamabad,2061381,478167,Non-Filer
-CIT0219,Aly Khan,H#12 St10 G11 Isb,907468,24744,Filer
-CIT0220,M Ahmed,Street 10 G11 Islamabad,1669838,335336,Filer
-CIT0221,احمد رضا,Phase 8 Bahria RWP,2312291,267345,Filer
-CIT0222,Ahmad Raza,Street 10 G11 Islamabad,1022292,248562,Filer
-CIT0223,Aly Khan,Street 10 G11 Islamabad,257383,308342,Non-Filer
-CIT0224,احمد رضا,H#45 DHA Lhr,2638509,255025,Non-Filer
-CIT0225,محمد احمد,Phase 8 Bahria RWP,1942786,462833,Filer
-CIT0226,Muhammad Ahmd,H#45 DHA Lhr,1201253,109549,Non-Filer
-CIT0227,Ahmad Raza,House 45 DHA Lahore,2143967,231478,Filer
-CIT0228,M Ahmed,H#12 St10 G11 Isb,2410246,181005,Non-Filer
-CIT0229,Ahmad Raza,House 12 Street 10 G11 Islamabad,957210,154668,Filer
-CIT0230,Ahmad Raza,Bahria Phase 8 Rawalpindi,1336489,99678,Filer
-CIT0231,Muhammad Ahmd,Street 10 G11 Islamabad,2425906,354449,Filer
-CIT0232,Ahmad Raza,Phase 8 Bahria RWP,1865601,53939,Non-Filer
-CIT0233,Ahmed Raza,Phase 8 Bahria RWP,2077555,52709,Non-Filer
-CIT0234,Muhammad Ahmd,H#12 St10 G11 Isb,979075,240190,Non-Filer
-CIT0235,Muhammad Ahmd,H#45 DHA Lhr,1921686,434318,Non-Filer
-CIT0236,Muhammad Ahmd,Phase 8 Bahria RWP,2468046,386549,Filer
-CIT0237,علی خان,Bahria Phase 8 Rawalpindi,1647467,221470,Filer
-CIT0238,Ahmad Raza,H#45 DHA Lhr,2386167,105102,Non-Filer
-CIT0239,Muhammad Ahmd,Bahria Phase 8 Rawalpindi,646465,260106,Non-Filer
-CIT0240,Aly Khan,House 45 DHA Lahore,2913955,455634,Non-Filer
-CIT0241,Muhammad Ahmed,Street 10 G11 Islamabad,1057533,494493,Non-Filer
-CIT0242,محمد احمد,House 12 Street 10 G11 Islamabad,2818745,125677,Filer
-CIT0243,M Ahmed,House 45 DHA Lahore,1520871,89588,Filer
-CIT0244,M Ahmed,Street 10 G11 Islamabad,418891,176269,Non-Filer
-CIT0245,Muhammad Ahmed,House 12 Street 10 G11 Islamabad,2531786,34381,Non-Filer
-CIT0246,Muhammad Ahmed,H#12 St10 G11 Isb,1736339,63242,Non-Filer
-CIT0247,Ali Khan,Bahria Phase 8 Rawalpindi,1689822,53156,Filer
-CIT0248,M Ahmed,House 45 DHA Lahore,656517,146648,Filer
-CIT0249,Ahmed Raza,Street 10 G11 Islamabad,2302857,309651,Non-Filer
-CIT0250,Muhammad Ahmed,Bahria Phase 8 Rawalpindi,290086,129126,Non-Filer
-CIT0251,Aly Khan,H#45 DHA Lhr,2769110,382938,Non-Filer
-CIT0252,احمد رضا,H#12 St10 G11 Isb,729082,93505,Filer
-CIT0253,Muhammad Ahmd,House 45 DHA Lahore,1515531,457930,Non-Filer
-CIT0254,M Ahmed,Phase 8 Bahria RWP,406518,245128,Filer
-CIT0255,احمد رضا,House 12 Street 10 G11 Islamabad,2121260,107164,Non-Filer
-CIT0256,احمد رضا,House 45 DHA Lahore,1675925,129059,Non-Filer
-CIT0257,Ahmed Raza,Bahria Phase 8 Rawalpindi,2017311,440644,Filer
-CIT0258,Aly Khan,H#45 DHA Lhr,1650888,390326,Filer
-CIT0259,Ali Khan,H#12 St10 G11 Isb,2749456,384334,Non-Filer
-CIT0260,احمد رضا,Street 10 G11 Islamabad,255933,441120,Non-Filer
-CIT0261,Ahmad Raza,H#45 DHA Lhr,2574311,19166,Non-Filer
-CIT0262,Ahmad Raza,House 12 Street 10 G11 Islamabad,558136,487579,Filer
-CIT0263,محمد احمد,H#12 St10 G11 Isb,2520941,352329,Non-Filer
-CIT0264,احمد رضا,H#12 St10 G11 Isb,1033112,357987,Non-Filer
-CIT0265,Muhammad Ahmed,House 45 DHA Lahore,1866037,240286,Non-Filer
-CIT0266,محمد احمد,H#45 DHA Lhr,2324970,323588,Non-Filer
-CIT0267,M Ahmed,Bahria Phase 8 Rawalpindi,1593288,332396,Non-Filer
-CIT0268,Ahmad Raza,H#12 St10 G11 Isb,1030494,354286,Filer
-CIT0269,Muhammad Ahmed,House 45 DHA Lahore,1730117,47923,Filer
-CIT0270,احمد رضا,H#12 St10 G11 Isb,328665,22919,Non-Filer
-CIT0271,احمد رضا,H#12 St10 G11 Isb,2206286,194685,Non-Filer
-CIT0272,M Ahmed,Street 10 G11 Islamabad,1657621,491463,Filer
-CIT0273,Muhammad Ahmd,Street 10 G11 Islamabad,441886,386648,Non-Filer
-CIT0274,Aly Khan,Street 10 G11 Islamabad,1401491,462807,Filer
-CIT0275,Muhammad Ahmed,H#45 DHA Lhr,2448162,16062,Filer
-CIT0276,Ahmad Raza,House 45 DHA Lahore,2882132,11749,Filer
-CIT0277,محمد احمد,Bahria Phase 8 Rawalpindi,860699,412407,Non-Filer
-CIT0278,علی خان,H#45 DHA Lhr,1636213,153332,Non-Filer
-CIT0279,Aly Khan,House 12 Street 10 G11 Islamabad,694044,460824,Non-Filer
-CIT0280,علی خان,Bahria Phase 8 Rawalpindi,743641,478577,Non-Filer
-CIT0281,Ahmad Raza,H#12 St10 G11 Isb,2536278,201198,Filer
-CIT0282,Ali Khan,House 45 DHA Lahore,723351,208082,Non-Filer
-CIT0283,Ahmad Raza,House 12 Street 10 G11 Islamabad,2250997,444995,Non-Filer
-CIT0284,Ali Khan,House 12 Street 10 G11 Islamabad,2463579,59126,Non-Filer
-CIT0285,Muhammad Ahmed,H#45 DHA Lhr,2906269,92618,Filer
-CIT0286,Ahmad Raza,Street 10 G11 Islamabad,1065212,193602,Non-Filer
-CIT0287,Muhammad Ahmd,Phase 8 Bahria RWP,344011,362367,Non-Filer
-CIT0288,M Ahmed,Phase 8 Bahria RWP,402303,209953,Non-Filer
-CIT0289,Ali Khan,H#12 St10 G11 Isb,2660939,123026,Non-Filer
-CIT0290,علی خان,Street 10 G11 Islamabad,1449855,259972,Filer
-CIT0291,Ahmed Raza,House 45 DHA Lahore,2495553,72894,Filer
-CIT0292,Aly Khan,Phase 8 Bahria RWP,1766070,286886,Filer
-CIT0293,محمد احمد,H#12 St10 G11 Isb,2748410,341466,Non-Filer
-CIT0294,Muhammad Ahmd,H#12 St10 G11 Isb,1200994,139470,Filer
-CIT0295,Muhammad Ahmd,H#12 St10 G11 Isb,1090567,217400,Filer
-CIT0296,Aly Khan,House 45 DHA Lahore,721258,211224,Filer
-CIT0297,Aly Khan,House 45 DHA Lahore,2470587,316215,Filer
-CIT0298,احمد رضا,Bahria Phase 8 Rawalpindi,1567437,172482,Non-Filer
-CIT0299,محمد احمد,H#12 St10 G11 Isb,2039421,197988,Non-Filer
-CIT0300,Muhammad Ahmd,House 12 Street 10 G11 Islamabad,1780206,409792,Non-Filer
+CIT0001,علی خان,I-8 Islamabad,10919911,892130,Filer
+CIT0002,Saqib Malik,Bahria Phase 7 Rawalpindi,1443793,108240,Filer
+CIT0003,Zain Ahmed,Saddar Faisalabad,10291490,801863,Filer
+CIT0004,Imran Khan,Wapda Town Multan,630469,86008,Filer
+CIT0005,Umair Khan,Peoples Colony Faisalabad,8851625,1102807,Non-Filer
+CIT0006,Ahmad Raza,Bahria Enclave Islamabad,8015003,427331,Non-Filer
+CIT0007,Haris Khan,Saddar Faisalabad,4625638,483448,Filer
+CIT0008,Rizwan Khan,Satellite Town Rawalpindi,2690167,193927,Non-Filer
+CIT0009,Muhammad Talha,Bahria Orchard Lahore,900108,103414,Filer
+CIT0010,محمد حمزہ,Jinnah Colony Sialkot,6522822,970785,Filer
+CIT0011,Waqas Khan,Cantt Multan,8291113,1031616,Filer
+CIT0012,Mohsin Raza,Hayatabad Peshawar,8001137,272953,Filer
+CIT0013,Ali Khaan,DHA Lahore,4139016,322399,Filer
+CIT0014,Abdullah Khan,Peoples Colony Faisalabad,7743954,307317,Non-Filer
+CIT0015,Muhammad Bilal,I-8 Islamabad,11194001,683346,Filer
+CIT0016,Hamza Siddiqui,Bahria Orchard Lahore,11405600,415444,Non-Filer
+CIT0017,Jawad Hussain,Model Town Lahore,9789005,1247164,Non-Filer
+CIT0018,Haris Khan,Model Town Lahore,5481454,683422,Non-Filer
+CIT0019,Abdul Rehman,Bahria Orchard Lahore,11655794,372063,Non-Filer
+CIT0020,Hussain Ali,Jinnah Colony Sialkot,8236800,880605,Non-Filer
+CIT0021,Aly Khan,Bahria Phase 8 Rawalpindi,4272231,596176,Filer
+CIT0022,Talha Abbasi,G-13 Islamabad,3143062,168712,Non-Filer
+CIT0023,Adnan Raza,Chaklala Rawalpindi,5833162,812503,Non-Filer
+CIT0024,Adeel Malik,Satellite Town Rawalpindi,2900943,399049,Filer
+CIT0025,Asad Ali,Bahria Orchard Lahore,1442229,70407,Non-Filer
+CIT0026,Zain Ahmed,Wapda Town Multan,10865272,1154644,Filer
+CIT0027,Adnan Raza,Soan Garden Islamabad,7006492,618298,Filer
+CIT0028,Naveed Malik,Cantt Multan,8805242,534850,Non-Filer
+CIT0029,Imran Khan,Peoples Colony Faisalabad,11825029,1553770,Filer
+CIT0030,Muhammad Ahmed,Saddar Faisalabad,629509,83481,Non-Filer
+CIT0031,Mohsin Raza,Peoples Colony Faisalabad,10232634,1420475,Filer
+CIT0032,Awais Iqbal,Saddar Faisalabad,1198502,100696,Non-Filer
+CIT0033,Talha Abbasi,Johar Town Lahore,2301142,220901,Non-Filer
+CIT0034,Irfan Khan,Bahria Phase 8 Rawalpindi,11026940,1418494,Filer
+CIT0035,Muhammad Talha,Soan Garden Islamabad,6597153,470248,Filer
+CIT0036,Muhammad Usman,Saddar Faisalabad,503574,56079,Filer
+CIT0037,Khurram Shah,DHA Rawalpindi,9433689,1198992,Non-Filer
+CIT0038,Umer Farooq,G-11 Islamabad,9236594,344007,Non-Filer
+CIT0039,Farhan Ali,Saddar Faisalabad,1816376,251561,Non-Filer
+CIT0040,Faizan Ahmed,PWD Islamabad,569086,0,Non-Filer
+CIT0041,Umer Farooq,Bahria Orchard Lahore,2604587,133504,Non-Filer
+CIT0042,Waqas Khan,Bahria Orchard Lahore,4307521,330342,Filer
+CIT0043,Asad Ali,University Town Peshawar,2251095,115299,Filer
+CIT0044,Usman Qureshi,PWD Islamabad,5832462,719152,Non-Filer
+CIT0045,Junaid Khan,G-11 Islamabad,760959,40050,Non-Filer
+CIT0046,Fahad Iqbal,DHA Karachi,11904256,950944,Non-Filer
+CIT0047,دانش احمد,Jinnah Colony Sialkot,7023685,600511,Filer
+CIT0048,Muhammad Talha,Bahria Orchard Lahore,8868309,905978,Filer
+CIT0049,Hussain Ali,Hayatabad Peshawar,1111937,67821,Non-Filer
+CIT0050,Muhammad Ahmed,Bahria Phase 7 Rawalpindi,5994962,298182,Filer
+CIT0051,Imran Khan,G-11 Islamabad,11910539,834824,Filer
+CIT0052,Bilal Chaudhry,G-13 Islamabad,7282193,302760,Filer
+CIT0053,Imran Khan,Satellite Town Rawalpindi,4921643,524019,Non-Filer
+CIT0054,محمد حمزہ,G-13 Islamabad,3685017,440067,Non-Filer
+CIT0055,Talha Abbasi,Chaklala Rawalpindi,2849067,153149,Non-Filer
+CIT0056,Mohsin Raza,G-13 Islamabad,9227868,1095113,Filer
+CIT0057,Ali Khaan,University Town Peshawar,10199326,1106989,Non-Filer
+CIT0058,محمد احمد,DHA Rawalpindi,2347567,162315,Non-Filer
+CIT0059,محمد احمد,I-8 Islamabad,6382292,708089,Non-Filer
+CIT0060,Khurram Shah,University Town Peshawar,3294650,251251,Filer
+CIT0061,Shahbaz Ahmed,University Town Peshawar,11150614,786959,Non-Filer
+CIT0062,Abdul Rehman,Satellite Town Rawalpindi,1071161,119427,Filer
+CIT0063,Aly Khan,G-13 Islamabad,1879923,126423,Non-Filer
+CIT0064,Ali Khan,Hayatabad Peshawar,3843665,561479,Filer
+CIT0065,Asad Ali,F-10 Islamabad,3320276,186935,Filer
+CIT0066,Bilal Chaudhry,I-8 Islamabad,10686201,1267209,Non-Filer
+CIT0067,علی خان,Clifton Karachi,1390360,133238,Non-Filer
+CIT0068,Waqas Khan,Bahria Phase 7 Rawalpindi,5266315,312399,Filer
+CIT0069,Adeel Malik,Hayatabad Peshawar,6423761,489153,Filer
+CIT0070,Usman Qureshi,Bahria Phase 7 Rawalpindi,8156845,438784,Non-Filer
+CIT0071,Aly Khan,Soan Garden Islamabad,4662941,433048,Non-Filer
+CIT0072,Rizwan Khan,F-11 Islamabad,5439720,254682,Non-Filer
+CIT0073,Waqas Khan,G-11 Islamabad,1821993,129991,Non-Filer
+CIT0074,Umair Khan,F-11 Islamabad,3014271,227437,Non-Filer
+CIT0075,Zain Ahmed,I-8 Islamabad,2516549,252719,Filer
+CIT0076,Hussain Ali,Wapda Town Multan,10632991,776904,Non-Filer
+CIT0077,Awais Iqbal,Wapda Town Multan,5979704,646716,Filer
+CIT0078,محمد احمد,Model Town Lahore,11953141,625294,Filer
+CIT0079,Usman Qureshi,I-8 Islamabad,6045057,662663,Non-Filer
+CIT0080,Umer Farooq,Cantt Multan,438638,0,Non-Filer
+CIT0081,Saqib Malik,Chaklala Rawalpindi,9704072,965721,Filer
+CIT0082,Rizwan Khan,DHA Karachi,7499121,445135,Filer
+CIT0083,Muhammad Hamza,Wapda Town Multan,652710,51061,Filer
+CIT0084,Ali Khan,Bahria Phase 8 Rawalpindi,6269906,436265,Filer
+CIT0085,اسامہ خان,Soan Garden Islamabad,5168263,673389,Filer
+CIT0086,Junaid Khan,Clifton Karachi,2109714,112525,Filer
+CIT0087,Hassan Ali,I-8 Islamabad,2490192,268457,Filer
+CIT0088,Mohsin Raza,Satellite Town Rawalpindi,11504608,412928,Filer
+CIT0089,Shahbaz Ahmed,Satellite Town Rawalpindi,6716984,504793,Non-Filer
+CIT0090,Kamran Malik,Bahria Enclave Islamabad,8584987,1228523,Filer
+CIT0091,Naveed Malik,University Town Peshawar,10166147,1288373,Filer
+CIT0092,Umer Farooq,Saddar Faisalabad,10126668,775143,Filer
+CIT0093,Zain Ahmed,DHA Karachi,9387488,1319254,Filer
+CIT0094,Muhammad Usman,Peoples Colony Faisalabad,8767604,1068475,Filer
+CIT0095,Salman Ahmed,PWD Islamabad,3756993,416403,Filer
+CIT0096,Shahzaib Ahmed,Hayatabad Peshawar,1701269,214859,Non-Filer
+CIT0097,Muhammad Bilal,Jinnah Colony Sialkot,1894422,61038,Filer
+CIT0098,Hamza Siddiqui,Wapda Town Multan,8902998,725694,Non-Filer
+CIT0099,احمد رضا,Soan Garden Islamabad,6670770,515683,Non-Filer
+CIT0100,Junaid Khan,I-8 Islamabad,6927781,450366,Non-Filer
+CIT0101,Talha Abbasi,Wapda Town Multan,9424417,949222,Filer
+CIT0102,محمد حمزہ,G-13 Islamabad,11942065,1035096,Non-Filer
+CIT0103,محمد حمزہ,Saddar Faisalabad,3120625,322824,Filer
+CIT0104,Ali Khaan,Hayatabad Peshawar,2376453,288606,Filer
+CIT0105,Ali Khaan,PWD Islamabad,6692296,261499,Non-Filer
+CIT0106,Waqas Khan,Wapda Town Multan,1342261,92795,Filer
+CIT0107,Muhammad Talha,DHA Lahore,4565711,613402,Filer
+CIT0108,محمد حمزہ,Bahria Enclave Islamabad,1661131,155638,Filer
+CIT0109,دانش احمد,Peoples Colony Faisalabad,9273778,581568,Filer
+CIT0110,Yasir Khan,F-11 Islamabad,8593839,752634,Filer
+CIT0111,Umair Khan,Chaklala Rawalpindi,4379969,556359,Non-Filer
+CIT0112,احمد رضا,Satellite Town Rawalpindi,2748965,209650,Filer
+CIT0113,Shahbaz Ahmed,I-8 Islamabad,11373976,1479688,Non-Filer
+CIT0114,Hamza Siddiqui,Cantt Multan,1398687,181253,Filer
+CIT0115,محمد احمد,Cantt Multan,9670369,658953,Non-Filer
+CIT0116,Fahad Iqbal,PWD Islamabad,11250898,683787,Non-Filer
+CIT0117,Asim Malik,University Town Peshawar,2894368,304837,Filer
+CIT0118,Kamran Malik,Bahria Orchard Lahore,3899203,424452,Filer
+CIT0119,Faizan Ahmed,Satellite Town Rawalpindi,2907076,306915,Filer
+CIT0120,Danish Ahmed,Gulshan Karachi,609867,0,Non-Filer
+CIT0121,احمد رضا,PWD Islamabad,4624482,621407,Non-Filer
+CIT0122,Fahad Iqbal,Model Town Lahore,2978577,396913,Filer
+CIT0123,Abdullah Khan,Model Town Lahore,9055790,1071546,Non-Filer
+CIT0124,Mohsin Raza,Johar Town Lahore,11904342,1287963,Non-Filer
+CIT0125,Saqib Malik,G-11 Islamabad,6856099,344380,Filer
+CIT0126,حسن علی,Jinnah Colony Sialkot,8336854,387094,Non-Filer
+CIT0127,Umer Farooq,PWD Islamabad,9682510,1020992,Non-Filer
+CIT0128,Muhammad Ahmed,Bahria Phase 7 Rawalpindi,910908,126593,Filer
+CIT0129,Adeel Malik,Chaklala Rawalpindi,2236947,240423,Filer
+CIT0130,اسامہ خان,Clifton Karachi,9816016,581419,Non-Filer
+CIT0131,Adnan Raza,DHA Karachi,5634309,741794,Filer
+CIT0132,فہد اقبال,G-11 Islamabad,1933625,268540,Non-Filer
+CIT0133,Kamran Malik,Model Town Lahore,2351204,273809,Filer
+CIT0134,Farhan Ali,Chaklala Rawalpindi,5400131,745340,Filer
+CIT0135,Arslan Malik,Saddar Faisalabad,5504903,283486,Non-Filer
+CIT0136,Farhan Ali,Jinnah Colony Sialkot,9798484,1413256,Filer
+CIT0137,Abdul Rehman,Cantt Multan,10351600,1376395,Filer
+CIT0138,Hassan Ali,F-11 Islamabad,8489122,548602,Non-Filer
+CIT0139,Yasir Khan,Peoples Colony Faisalabad,4681272,425166,Non-Filer
+CIT0140,Abdullah Khan,F-11 Islamabad,8114136,486958,Non-Filer
+CIT0141,Muhammad Ahmed,Clifton Karachi,5904688,410265,Filer
+CIT0142,Danish Ahmed,Wapda Town Multan,10835908,378514,Filer
+CIT0143,Adeel Malik,Clifton Karachi,11638123,1391626,Non-Filer
+CIT0144,Muhammad Hamza,University Town Peshawar,2581780,132968,Non-Filer
+CIT0145,Aly Khan,PWD Islamabad,6235976,235271,Filer
+CIT0146,Muhammad Hamza,I-8 Islamabad,6143182,360953,Non-Filer
+CIT0147,Khurram Shah,Saddar Faisalabad,1389355,89199,Non-Filer
+CIT0148,Hassan Ali,Bahria Enclave Islamabad,11563390,932032,Non-Filer
+CIT0149,Zain Ahmed,Peoples Colony Faisalabad,11340186,1447815,Filer
+CIT0150,Faizan Ahmed,Johar Town Lahore,3073859,250821,Non-Filer
+CIT0151,Adnan Raza,I-8 Islamabad,1172156,122326,Non-Filer
+CIT0152,Kamran Malik,Model Town Lahore,9039275,711094,Non-Filer
+CIT0153,Faizan Ahmed,DHA Rawalpindi,7781069,1065771,Non-Filer
+CIT0154,Arslan Malik,DHA Lahore,4625130,662126,Non-Filer
+CIT0155,Muhammad Talha,I-8 Islamabad,4348271,210637,Filer
+CIT0156,Adeel Malik,Gulshan Karachi,9055311,515982,Non-Filer
+CIT0157,Ahmad Raza,Peoples Colony Faisalabad,8811849,474640,Filer
+CIT0158,Danish Ahmed,Saddar Faisalabad,8753967,920962,Non-Filer
+CIT0159,محمد بلال,I-8 Islamabad,10669149,646786,Filer
+CIT0160,Adeel Malik,Wapda Town Multan,365368,0,Non-Filer
+CIT0161,Aly Khan,Model Town Lahore,10588616,1280120,Non-Filer
+CIT0162,احمد رضا,Jinnah Colony Sialkot,5698918,233754,Non-Filer
+CIT0163,Arslan Malik,Bahria Orchard Lahore,8060526,817129,Filer
+CIT0164,Muhammad Bilal,F-10 Islamabad,6745946,929666,Filer
+CIT0165,Umer Farooq,G-13 Islamabad,1293909,161859,Filer
+CIT0166,Aly Khan,Hayatabad Peshawar,7744666,1036105,Non-Filer
+CIT0167,Farhan Ali,Satellite Town Rawalpindi,1912280,194282,Filer
+CIT0168,Mohsin Raza,G-13 Islamabad,11293841,1271308,Filer
+CIT0169,Usman Qureshi,Satellite Town Rawalpindi,8038538,364197,Filer
+CIT0170,حسن علی,Bahria Orchard Lahore,6333253,822907,Non-Filer
+CIT0171,محمد احمد,Soan Garden Islamabad,7475973,1104554,Filer
+CIT0172,Imran Khan,PWD Islamabad,11754021,1490232,Non-Filer
+CIT0173,Junaid Khan,Chaklala Rawalpindi,9099961,775782,Filer
+CIT0174,Irfan Khan,Wapda Town Multan,6282370,419752,Non-Filer
+CIT0175,Asim Malik,University Town Peshawar,597460,42020,Non-Filer
+CIT0176,Umer Farooq,DHA Karachi,6983893,771359,Non-Filer
+CIT0177,Asad Ali,I-8 Islamabad,4296189,343789,Non-Filer
+CIT0178,Irfan Khan,Model Town Lahore,2453867,357584,Filer
+CIT0179,Salman Ahmed,Gulshan Karachi,2779122,131254,Non-Filer
+CIT0180,محمد بلال,Clifton Karachi,11870191,1222948,Non-Filer
+CIT0181,Haris Khan,Bahria Enclave Islamabad,3971244,469816,Filer
+CIT0182,Adeel Malik,G-11 Islamabad,11698066,579872,Filer
+CIT0183,Junaid Khan,Gulshan Karachi,2079939,309583,Non-Filer
+CIT0184,Imran Khan,Hayatabad Peshawar,542903,80377,Non-Filer
+CIT0185,Imran Khan,Hayatabad Peshawar,3132421,432077,Non-Filer
+CIT0186,Muhammad Bilal,Bahria Orchard Lahore,11408450,469689,Non-Filer
+CIT0187,Khurram Shah,Johar Town Lahore,6993863,212371,Filer
+CIT0188,Tariq Mehmood,Hayatabad Peshawar,1332248,156162,Filer
+CIT0189,Adnan Raza,Peoples Colony Faisalabad,6355058,644006,Non-Filer
+CIT0190,Farhan Ali,F-11 Islamabad,7194823,354867,Filer
+CIT0191,دانش احمد,Satellite Town Rawalpindi,2626845,130630,Non-Filer
+CIT0192,Muhammad Bilal,Peoples Colony Faisalabad,6106381,632574,Non-Filer
+CIT0193,دانش احمد,PWD Islamabad,7379579,241434,Non-Filer
+CIT0194,Danish Ahmed,Johar Town Lahore,4828885,366789,Non-Filer
+CIT0195,محمد حمزہ,F-11 Islamabad,4730956,430238,Filer
+CIT0196,Fahad Iqbal,Hayatabad Peshawar,1366921,188731,Non-Filer
+CIT0197,Ahmed Raza,Saddar Faisalabad,7350864,812196,Filer
+CIT0198,Kamran Malik,Saddar Faisalabad,4605590,620884,Non-Filer
+CIT0199,Zain Ahmed,Wapda Town Multan,10562383,561165,Non-Filer
+CIT0200,اسامہ خان,Chaklala Rawalpindi,715733,0,Non-Filer
+CIT0201,Haris Khan,Saddar Faisalabad,876512,38637,Non-Filer
+CIT0202,احمد رضا,Satellite Town Rawalpindi,10220713,944591,Filer
+CIT0203,محمد حمزہ,Cantt Multan,1773325,176360,Filer
+CIT0204,وقاص خان,DHA Karachi,3298668,268616,Non-Filer
+CIT0205,Mohsin Raza,Cantt Multan,8889406,860450,Non-Filer
+CIT0206,Bilal Chaudhry,Chaklala Rawalpindi,10533744,1178414,Non-Filer
+CIT0207,علی خان,Satellite Town Rawalpindi,11041909,1052209,Filer
+CIT0208,Imran Khan,DHA Rawalpindi,1591699,113047,Filer
+CIT0209,Asad Ali,PWD Islamabad,9024056,573120,Non-Filer
+CIT0210,Usman Qureshi,PWD Islamabad,5300582,373489,Filer
+CIT0211,Muhammad Bilal,Clifton Karachi,8752303,997864,Filer
+CIT0212,Hassan Ali,F-11 Islamabad,9790703,469304,Filer
+CIT0213,Fahad Iqbal,Bahria Phase 7 Rawalpindi,11920437,387152,Filer
+CIT0214,Asim Malik,I-8 Islamabad,10556802,574281,Filer
+CIT0215,Adnan Raza,Johar Town Lahore,10671546,830918,Non-Filer
+CIT0216,Haris Khan,DHA Karachi,7880300,272091,Non-Filer
+CIT0217,Adnan Raza,DHA Karachi,2410021,334477,Non-Filer
+CIT0218,Adnan Raza,DHA Lahore,4803437,551106,Non-Filer
+CIT0219,Salman Ahmed,F-10 Islamabad,11215984,891891,Filer
+CIT0220,Hussain Ali,PWD Islamabad,7130758,783354,Filer
+CIT0221,دانش احمد,I-8 Islamabad,8648237,260441,Filer
+CIT0222,Muhammad Bilal,G-11 Islamabad,6951025,816790,Filer
+CIT0223,Asad Ali,Bahria Phase 7 Rawalpindi,8368363,991207,Non-Filer
+CIT0224,Asim Malik,Chaklala Rawalpindi,1815193,223826,Non-Filer
+CIT0225,Abdullah Khan,Bahria Phase 7 Rawalpindi,11255644,914874,Non-Filer
+CIT0226,Danish Ahmed,Model Town Lahore,3517330,348952,Filer
+CIT0227,Hamza Siddiqui,University Town Peshawar,8479327,818326,Non-Filer
+CIT0228,Umer Farooq,Hayatabad Peshawar,5836170,395230,Non-Filer
+CIT0229,Salman Ahmed,Bahria Orchard Lahore,8827907,881385,Filer
+CIT0230,احمد رضا,G-13 Islamabad,7158132,905247,Filer
+CIT0231,Junaid Khan,I-8 Islamabad,2351365,246433,Non-Filer
+CIT0232,وقاص خان,Bahria Phase 8 Rawalpindi,10846980,1574113,Filer
+CIT0233,حسن علی,G-11 Islamabad,7347757,587079,Filer
+CIT0234,Abdul Rehman,Johar Town Lahore,4497379,592961,Non-Filer
+CIT0235,Irfan Khan,Peoples Colony Faisalabad,1190782,57413,Filer
+CIT0236,Adeel Malik,I-8 Islamabad,2937000,111487,Non-Filer
+CIT0237,Ahmad Raza,DHA Lahore,11796172,1423702,Filer
+CIT0238,Umer Farooq,Bahria Orchard Lahore,10154802,1425897,Filer
+CIT0239,Hamza Siddiqui,Model Town Lahore,4670673,267358,Non-Filer
+CIT0240,Tariq Mehmood,Bahria Phase 7 Rawalpindi,336439,0,Non-Filer
+CIT0241,Umair Khan,Bahria Enclave Islamabad,6400962,658519,Non-Filer
+CIT0242,Shahzaib Ahmed,Saddar Faisalabad,10991543,362858,Non-Filer
+CIT0243,Asim Malik,G-13 Islamabad,10277260,674644,Non-Filer
+CIT0244,Jawad Hussain,Johar Town Lahore,5152232,741216,Non-Filer
+CIT0245,وقاص خان,Satellite Town Rawalpindi,6604172,614328,Non-Filer
+CIT0246,Ali Khan,F-11 Islamabad,5130730,742016,Non-Filer
+CIT0247,حسن علی,DHA Karachi,9472370,1377415,Non-Filer
+CIT0248,علی خان,Peoples Colony Faisalabad,7931242,285142,Non-Filer
+CIT0249,Noman Ali,F-11 Islamabad,8959570,286965,Filer
+CIT0250,Naveed Malik,Model Town Lahore,9932318,405259,Filer
+CIT0251,Ali Khan,I-8 Islamabad,8358881,637127,Filer
+CIT0252,Faizan Ahmed,DHA Karachi,11634515,1263853,Non-Filer
+CIT0253,Waqas Khan,Bahria Phase 8 Rawalpindi,6144567,276258,Non-Filer
+CIT0254,Adeel Malik,DHA Lahore,9027985,1331452,Filer
+CIT0255,Khurram Shah,Model Town Lahore,1689483,90649,Non-Filer
+CIT0256,Farhan Ali,Model Town Lahore,6548509,411883,Non-Filer
+CIT0257,دانش احمد,Model Town Lahore,5796095,204623,Filer
+CIT0258,Muhammad Bilal,Saddar Faisalabad,10611716,1223102,Non-Filer
+CIT0259,Talha Abbasi,Chaklala Rawalpindi,2091915,252566,Non-Filer
+CIT0260,حسن علی,Soan Garden Islamabad,4370147,452704,Non-Filer
+CIT0261,Faizan Ahmed,DHA Lahore,3842254,197167,Filer
+CIT0262,Awais Iqbal,G-11 Islamabad,11505774,1421146,Filer
+CIT0263,Imran Khan,Wapda Town Multan,6527752,510772,Non-Filer
+CIT0264,Jawad Hussain,G-11 Islamabad,2092385,224241,Filer
+CIT0265,Fahad Iqbal,Hayatabad Peshawar,3970192,263978,Non-Filer
+CIT0266,Asad Ali,I-8 Islamabad,9627547,430544,Non-Filer
+CIT0267,Irfan Khan,Wapda Town Multan,7290542,633649,Non-Filer
+CIT0268,Umair Khan,Saddar Faisalabad,4315196,464569,Non-Filer
+CIT0269,Adeel Malik,F-11 Islamabad,4154651,248351,Non-Filer
+CIT0270,Sarmad Ali,Wapda Town Multan,4054330,222848,Filer
+CIT0271,Ali Khaan,Soan Garden Islamabad,11829866,1683408,Filer
+CIT0272,Kamran Malik,Cantt Multan,11569029,875671,Non-Filer
+CIT0273,Bilal Chaudhry,G-11 Islamabad,2533426,366894,Filer
+CIT0274,وقاص خان,Bahria Phase 8 Rawalpindi,9654087,502631,Non-Filer
+CIT0275,Asim Malik,F-10 Islamabad,9828104,709065,Non-Filer
+CIT0276,Muhammad Hamza,Bahria Phase 7 Rawalpindi,1429067,164803,Filer
+CIT0277,Shahzaib Ahmed,Bahria Enclave Islamabad,5458334,791246,Filer
+CIT0278,Usman Qureshi,Chaklala Rawalpindi,5101199,566419,Filer
+CIT0279,Ali Khan,Wapda Town Multan,1442260,210482,Non-Filer
+CIT0280,Mohsin Raza,Peoples Colony Faisalabad,697665,0,Non-Filer
+CIT0281,Asad Ali,PWD Islamabad,11827253,435576,Non-Filer
+CIT0282,Muhammad Hamza,Gulshan Karachi,9215802,702965,Non-Filer
+CIT0283,Muhammad Talha,Bahria Phase 7 Rawalpindi,7051991,850321,Filer
+CIT0284,Ali Khaan,Bahria Phase 8 Rawalpindi,8457038,627881,Filer
+CIT0285,Usman Qureshi,Bahria Enclave Islamabad,10784866,1339108,Filer
+CIT0286,Arslan Malik,F-11 Islamabad,3677961,390997,Filer
+CIT0287,Bilal Chaudhry,F-10 Islamabad,7023905,368731,Filer
+CIT0288,Jawad Hussain,Peoples Colony Faisalabad,519651,63848,Filer
+CIT0289,Asim Malik,Peoples Colony Faisalabad,5028908,527261,Filer
+CIT0290,Shahbaz Ahmed,Model Town Lahore,933729,35062,Non-Filer
+CIT0291,دانش احمد,Soan Garden Islamabad,5530467,752162,Filer
+CIT0292,Shahzaib Ahmed,Saddar Faisalabad,7872986,720046,Non-Filer
+CIT0293,Ali Khan,PWD Islamabad,11096689,456325,Filer
+CIT0294,Farhan Ali,Cantt Multan,1255691,116982,Non-Filer
+CIT0295,اسامہ خان,F-11 Islamabad,11675046,1106957,Filer
+CIT0296,Junaid Khan,Johar Town Lahore,4701617,263310,Non-Filer
+CIT0297,Yasir Khan,Peoples Colony Faisalabad,2026379,269664,Non-Filer
+CIT0298,Hassan Ali,Chaklala Rawalpindi,6819640,774586,Non-Filer
+CIT0299,Farhan Ali,G-11 Islamabad,7328969,842734,Non-Filer
+CIT0300,Rizwan Khan,Soan Garden Islamabad,3737232,348011,Non-Filer

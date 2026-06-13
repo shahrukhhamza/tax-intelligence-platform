@@ -40,11 +40,25 @@ function App() {
               element={<CitizenProfile />}
             />
 
+            {/* Full Graph View */}
+            <Route
+              path="/graph"
+              element={<KnowledgeGraphPage />}
+            />
+
+            {/* Citizen Specific Graph */}
             <Route
               path="/graph/:id"
               element={<KnowledgeGraphPage />}
             />
 
+            {/* Audit Reports */}
+            <Route
+              path="/audit"
+              element={<AuditReports />}
+            />
+
+            {/* Citizen Specific Audit */}
             <Route
               path="/audit/:id"
               element={<AuditReports />}

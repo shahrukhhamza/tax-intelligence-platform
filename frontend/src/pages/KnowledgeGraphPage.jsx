@@ -6,6 +6,8 @@ function KnowledgeGraphPage() {
 
   const { id } = useParams();
 
+  const entityId = id || "ENT001";
+
   const [graphData, setGraphData] = useState({
     nodes: [],
     edges: [],
@@ -14,7 +16,7 @@ function KnowledgeGraphPage() {
   useEffect(() => {
 
     fetch(
-      `http://127.0.0.1:8000/api/graph/${id}`
+      `http://127.0.0.1:8000/api/graph/${entityId}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -34,7 +36,7 @@ function KnowledgeGraphPage() {
         console.error(err)
       );
 
-  }, [id]);
+  }, [entityId]);
 
   return (
     <div style={{ padding: "20px" }}>
@@ -44,7 +46,7 @@ function KnowledgeGraphPage() {
       </h1>
 
       <p>
-        Entity ID: {id}
+        Entity ID: {entityId}
       </p>
 
       <KnowledgeGraph

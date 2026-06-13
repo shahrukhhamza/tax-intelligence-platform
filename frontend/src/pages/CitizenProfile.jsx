@@ -7,184 +7,198 @@ function CitizenProfile() {
   const navigate = useNavigate();
 
   const [citizen, setCitizen] = useState(null);
-
   const [graphData, setGraphData] = useState({
     nodes: [],
     edges: [],
   });
 
   useEffect(() => {
-    fetch(
-      `http://127.0.0.1:8000/api/live-citizen/${id}`
-    )
+    fetch(`http://127.0.0.1:8000/api/live-citizen/${id}`)
       .then((res) => res.json())
-      .then((data) => {
-        console.log("CITIZEN DATA:", data);
-        setCitizen(data);
-      });
+      .then((data) => setCitizen(data))
+      .catch(console.error);
 
-    fetch(
-      `http://127.0.0.1:8000/api/graph/${id}`
-    )
+    fetch(`http://127.0.0.1:8000/api/graph/${id}`)
       .then((res) => res.json())
-      .then((data) => {
-        console.log("GRAPH DATA:", data);
-
+      .then((data) =>
         setGraphData({
           nodes: data.nodes || [],
           edges: data.edges || [],
-        });
-      });
+        })
+      )
+      .catch(console.error);
   }, [id]);
 
   if (!citizen) {
     return (
-      <h2 style={{ padding: "32px" }}>
-        Loading Citizen Profile...
-      </h2>
+      <div style={{ padding: "32px" }}>
+        <h2>Loading Citizen Profile...</h2>
+      </div>
     );
   }
 
+  const riskColor =
+    citizen.risk_score >= 80
+      ? "#EF4444"
+      : citizen.risk_score >= 60
+      ? "#F97316"
+      : citizen.risk_score >= 35
+      ? "#EAB308"
+      : "#22C55E";
+
   return (
     <div style={{ padding: "32px" }}>
-      <h1>
-        {citizen.name ||
-          citizen.master_name ||
-          "Unknown Citizen"}
-      </h1>
+      <h1>{citizen.name}</h1>
 
-      <h2 style={{ marginTop: "10px" }}>
-        Risk Score: {citizen.risk_score || 0}
-      </h2>
+      <p style={{ color: "#94A3B8", marginTop: "8px" }}>
+        Entity ID: {citizen.entity_id}
+      </p>
 
+      {/* Risk Score */}
+      <div
+        className="card"
+        style={{
+          padding: "24px",
+          marginTop: "24px",
+          marginBottom: "24px",
+        }}
+      >
+        <h3>Tax Compliance Deviation Score</h3>
+
+        <h1
+          style={{
+            color: riskColor,
+            marginTop: "10px",
+          }}
+        >
+          {citizen.risk_score}/100
+        </h1>
+
+        <p style={{ color: riskColor }}>
+          {citizen.risk_level} Risk
+        </p>
+      </div>
+
+      {/* Metrics */}
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(4,1fr)",
+          gridTemplateColumns:
+            "repeat(auto-fit,minmax(220px,1fr))",
           gap: "20px",
-          marginTop: "30px",
+          marginBottom: "30px",
         }}
       >
-        <div className="card">
+        <div className="card" style={{ padding: "20px" }}>
           <h3>Declared Income</h3>
-
           <p>
             PKR{" "}
-            {citizen.declared_income?.toLocaleString?.() ||
-              0}
+            {citizen.declared_income?.toLocaleString()}
           </p>
         </div>
 
-        <div className="card">
+        <div className="card" style={{ padding: "20px" }}>
           <h3>Filer Status</h3>
-
-          <p>
-            {citizen.filer_status ||
-              "Unknown"}
-          </p>
+          <p>{citizen.filer_status}</p>
         </div>
 
-        <div className="card">
-          <h3>Linked Records</h3>
-
-          <p>
-            {Array.isArray(
-              citizen.linked_records
-            )
-              ? citizen.linked_records.length
-              : citizen.linked_records ||
-                0}
-          </p>
+        <div className="card" style={{ padding: "20px" }}>
+          <h3>Vehicles</h3>
+          <p>{citizen.vehicle_count}</p>
         </div>
 
-        <div className="card">
-          <h3>Aliases</h3>
-
-          <p>
-            {citizen.aliases?.length || 0}
-          </p>
-
-          <small
-            style={{
-              display: "block",
-              marginTop: "10px",
-              color: "#666",
-            }}
-          >
-            {citizen.aliases
-              ?.slice(0, 3)
-              .join(", ")}
-          </small>
+        <div className="card" style={{ padding: "20px" }}>
+          <h3>Properties</h3>
+          <p>{citizen.property_count}</p>
         </div>
       </div>
 
+      {/* Risk Factors */}
       <div
+        className="card"
         style={{
-          marginTop: "40px",
+          padding: "24px",
+          marginBottom: "30px",
         }}
       >
         <h2>Risk Factors</h2>
 
-        <ul
-          style={{
-            marginTop: "10px",
-          }}
-        >
-          {citizen.reasons?.map(
-            (reason, index) => (
-              <li key={index}>
-                {reason}
-              </li>
-            )
-          )}
+        <ul style={{ marginTop: "16px" }}>
+          {citizen.reasons?.map((reason, index) => (
+            <li key={index}>{reason}</li>
+          ))}
         </ul>
       </div>
 
+      {/* Entity Resolution */}
+      <div
+        className="card"
+        style={{
+          padding: "24px",
+          marginBottom: "30px",
+        }}
+      >
+        <h2>Entity Resolution</h2>
+
+        <p style={{ marginTop: "12px" }}>
+          Linked Records:{" "}
+          {citizen.linked_records?.length || 0}
+        </p>
+
+        <p>
+          Identity Variations:{" "}
+          {citizen.aliases?.length || 0}
+        </p>
+
+        <p>
+          Aliases:{" "}
+          {citizen.aliases?.join(", ")}
+        </p>
+      </div>
+
+      {/* Actions */}
       <div
         style={{
           display: "flex",
           gap: "15px",
-          marginTop: "30px",
+          marginBottom: "40px",
+          flexWrap: "wrap",
         }}
       >
         <button
+          className="btn button-primary"
           onClick={() =>
             navigate(`/graph/${id}`)
           }
-          style={{
-            padding: "12px 20px",
-            cursor: "pointer",
-          }}
         >
-          View Full Investigation Graph
+          Investigation Graph
         </button>
 
         <button
+          className="btn button-danger"
           onClick={() =>
             navigate(`/audit/${id}`)
           }
-          style={{
-            padding: "12px 20px",
-            cursor: "pointer",
-          }}
         >
           Generate AI Audit Report
         </button>
       </div>
 
+      {/* Graph */}
       <div
+        className="card"
         style={{
-          marginTop: "50px",
+          padding: "24px",
         }}
       >
-        <h2>
-          Investigation Graph
-        </h2>
+        <h2>Investigation Network</h2>
 
-        <KnowledgeGraph
-          nodes={graphData.nodes}
-          edges={graphData.edges}
-        />
+        <div style={{ marginTop: "20px" }}>
+          <KnowledgeGraph
+            nodes={graphData.nodes}
+            edges={graphData.edges}
+          />
+        </div>
       </div>
     </div>
   );
