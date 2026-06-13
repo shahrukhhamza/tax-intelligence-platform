@@ -5,6 +5,9 @@ from routes.citizens import router as citizens_router
 from routes.graph import router as graph_router
 from routes.audit import router as audit_router
 
+from services.profile_builder import ProfileBuilder
+from services.risk_engine import RiskEngine
+from services.data_enrichment import DataEnrichment
 
 app = FastAPI(
     title="Tax Intelligence Platform",
@@ -42,7 +45,9 @@ app.include_router(
     audit_router,
     prefix="/api"
 )
-
+profile_builder = ProfileBuilder()
+risk_engine = RiskEngine()
+enrichment_service = DataEnrichment()
 # ----------------------------------
 # ROOT
 # ----------------------------------
@@ -63,22 +68,66 @@ def root():
 @app.get("/api/dashboard")
 def dashboard():
 
+    profiles = profile_builder.build_profiles()
+
+    total_citizens = len(profiles)
+
+    high_risk_citizens = 0
+    total_risk_score = 0
+
+    for profile in profiles:
+
+        enrichment = enrichment_service.enrich(
+            profile
+        )
+
+        risk = risk_engine.calculate_risk(
+            profile,
+            vehicles=enrichment.get(
+                "vehicles",
+                []
+            ),
+            utility_bill=enrichment.get(
+                "max_bill",
+                0
+            ),
+            properties=enrichment.get(
+                "properties",
+                []
+            )
+        )
+
+        total_risk_score += risk["risk_score"]
+
+        if risk["risk_score"] >= 80:
+            high_risk_citizens += 1
+
+    average_risk_score = (
+        round(
+            total_risk_score /
+            total_citizens,
+            1
+        )
+        if total_citizens > 0
+        else 0
+    )
+
     return {
 
         "total_citizens":
-        301,
+        total_citizens,
 
         "resolved_entities":
-        301,
+        total_citizens,
 
         "high_risk_citizens":
-        47,
+        high_risk_citizens,
 
         "average_risk_score":
-        56.4,
+        average_risk_score,
 
         "potential_revenue_leakage":
-        12500000
+        high_risk_citizens * 250000
 
     }
 
